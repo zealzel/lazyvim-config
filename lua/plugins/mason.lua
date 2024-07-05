@@ -6,6 +6,7 @@ return {
     },
     ensure_installed = {
       "stylua",
+      "bash-language-server",
       "shellcheck",
       "shfmt",
       "flake8",
