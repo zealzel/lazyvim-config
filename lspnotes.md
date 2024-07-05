@@ -1,31 +1,37 @@
+## sh
+
+#### lsp
+
+- bash-language-server|bashls
+
 ## lua
 
-### LSP
+#### lsp
 
 - lua-language-server|lua_ls
 
 ## python
 
-### LSP
+#### lsp
 
 - ruff-lsp|ruff_lsp
 - pyright (npm needed)
 
 ## C/C++
 
-### LSP
+#### lsp
 
 - clangd
 
 ## cmake
 
-### LSP
+#### lsp
 
 - neocmakelsp|neocmake (cargo needed)
 
 ## javscript
 
-### LSP
+#### lsp
 
 - vtsls (npm needed)
   Formatter
@@ -33,6 +39,6 @@
 
 ## json
 
-### LSP
+#### lsp
 
 - json-lsp (npm needed)
