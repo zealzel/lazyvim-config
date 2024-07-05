@@ -5,6 +5,7 @@ return {
       border = "rounded",
     },
     ensure_installed = {
+      "bash-language-server",
       "stylua",
       "shellcheck",
       "shfmt",
