@@ -61,4 +61,9 @@ return {
       vim.fn["mkdp#util#install"]()
     end,
   },
+  {
+    "vhyrro/luarocks.nvim",
+    priority = 1000,
+    config = true,
+  },
 }
