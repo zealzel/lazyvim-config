@@ -1,5 +1,6 @@
 return {
   { "ellisonleao/gruvbox.nvim" },
+  -- { "tpope/vim-obsession" },
   {
     -- Configure LazyVim to load gruvbox
     "LazyVim/LazyVim",
