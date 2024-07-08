@@ -23,6 +23,7 @@ map("n", "<C-n>", ":Neotree toggle<cr>", { desc = "Neotree toggle", silent = tru
 -- whichkeys
 local wk = require("which-key")
 local mappings = {
+  S = { ":SessionSave<cr>:lua print('session saved')<cr>", "Save Session" },
   g = {
     name = "Git",
     -- g = { "<cmd>lua require 'lvim.core.terminal'.lazygit_toggle(12000)<cr>", "Lazygit" },
