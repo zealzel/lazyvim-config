@@ -61,4 +61,15 @@ return {
       vim.fn["mkdp#util#install"]()
     end,
   },
+  {
+    "ellisonleao/glow.nvim",
+    config = true,
+    cmd = "Glow",
+    opts = {
+      -- width = 80,
+      -- height = 100,
+      width = 160,
+      height = 200,
+    },
+  },
 }
