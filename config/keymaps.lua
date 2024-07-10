@@ -12,7 +12,9 @@ map("n", "<s-tab>", ":bprevious<cr>", { desc = "Previous buffer", silent = true 
 -- map("n", "<leader>c", "<leader>bd", { desc = "Delete Buffer", remap = true, silent = true })
 
 map("n", "<C-q>", ":q<cr>", { desc = "quit current window", silent = true })
--- map("v", "p", '""p:let @"=@0<CR>', { desc = "paste", remap = true, silent = true })
+
+-- Replace a word with yanked text without changing the default register
+map("v", "p", 'p:let @"=@0<CR>', { desc = "paste", remap = true, silent = true })
 
 map("n", "Z", "za", { desc = "toggle fold" })
 

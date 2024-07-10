@@ -11,6 +11,8 @@ opt.scrolloff = 0
 opt.modeline = false
 opt.timeoutlen = 1000
 
+opt.swapfile = false
+
 -- vim.g.mkdp_auto_start = 0
 -- vim.g.mkdp_auto_close = 0
 -- vim.g.mkdp_browser = "firefox"
@@ -19,4 +21,4 @@ opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldlevel = 99
 
-vim.o.shell = "bash"
+vim.o.foldmethod = "bash"
