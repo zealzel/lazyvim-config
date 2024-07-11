@@ -81,11 +81,11 @@ return {
   {
     "echasnovski/mini.nvim",
     version = false,
-    config = function()
-      require("mini.animate").setup({
-        -- Configuration here, or leave empty to use defaults
-      })
-    end,
+    -- config = function()
+    --   require("mini.animate").setup({
+    --     -- Configuration here, or leave empty to use defaults
+    --   })
+    -- end,
   },
   {
     "folke/edgy.nvim",
