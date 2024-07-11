@@ -22,6 +22,10 @@ map("n", "<C-g>", ":vertical :Git <CR>", { desc = "fugitive Git", silent = true 
 
 map("n", "<C-n>", ":Neotree toggle<cr>", { desc = "Neotree toggle", silent = true })
 
+map("n", "<C-\\>", ":ToggleTerm<cr>", { desc = "toggleterm", silent = true })
+map("n", "<leader>ts", ":ToggleTermSendCurrentLine<cr>", { desc = "ToggleTermSendCurrentLine" })
+map("v", "<leader>ts", ":ToggleTermSendVisualLines<cr>", { desc = ":ToggleTermSendVisualLines<cr>" })
+
 -- whichkeys
 local wk = require("which-key")
 local mappings = {
@@ -55,3 +59,8 @@ local mappings = {
 }
 local opts = { prefix = "<leader>" }
 wk.register(mappings, opts)
+
+-- tmap <C-h> <C-\><C-N><C-h>
+-- map("t", "<C-k>", "<C-\\><C-n><C-w>k", { silent = true })
+-- map("t", "<C-k>", "<C-\\><C-n><C-w>k", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("t", "<esc>", "<C-\\><C-n>", { noremap = true })
