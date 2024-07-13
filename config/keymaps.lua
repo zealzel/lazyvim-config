@@ -22,7 +22,7 @@ map("n", "<C-g>", ":vertical :Git <CR>", { desc = "fugitive Git", silent = true 
 
 map("n", "<C-n>", ":Neotree toggle<cr>", { desc = "Neotree toggle", silent = true })
 
-map("n", "<C-\\>", ":ToggleTerm<cr>", { desc = "toggleterm", silent = true })
+map("n", "<C-t>", ":ToggleTerm<cr>", { desc = "toggleterm", silent = true })
 map("n", "<leader>ts", ":ToggleTermSendCurrentLine<cr>", { desc = "ToggleTermSendCurrentLine" })
 map("v", "<leader>ts", ":ToggleTermSendVisualLines<cr>", { desc = ":ToggleTermSendVisualLines<cr>" })
 
