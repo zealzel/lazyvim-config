@@ -21,7 +21,8 @@ map("n", "<C-g>", ":vertical :Git <CR>", { desc = "fugitive Git", silent = true 
 map("n", "<C-n>", ":Neotree toggle<cr>", { desc = "Neotree toggle", silent = true })
 
 -- unmap("n", "<C-/>", { desc = "Lazyterm" })
-map("n", "<C-\\>", ":ToggleTerm<cr>", { desc = "toggleterm", silent = true })
+-- map("n", "<C-\\>", ":ToggleTerm<cr>", { desc = "toggleterm", silent = true })
+map("n", "<C-t>", ":ToggleTerm<cr>", { desc = "toggleterm", silent = true })
 map("n", "<leader>ts", ":ToggleTermSendCurrentLine<cr>", { desc = "ToggleTermSendCurrentLine" })
 map("v", "<leader>ts", ":ToggleTermSendVisualLines<cr>", { desc = ":ToggleTermSendVisualLines<cr>" })
 -- map("v", "<leader>ts", ":ToggleTermSendVisualSelection<cr>", { desc = ":ToggleTermSendVisualSelection<cr>" })
@@ -64,6 +65,7 @@ wk.register(mappings, opts)
 function _G.set_terminal_keymaps()
   local opts = { buffer = 0 }
   vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
+  vim.keymap.set("t", "<C-t>", [[<C-\><C-n><Cmd>ToggleTermToggleAll<CR>]], opts)
   vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
   vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
   vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
