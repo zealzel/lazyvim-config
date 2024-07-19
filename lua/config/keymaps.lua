@@ -30,37 +30,33 @@ map("v", "<leader>ts", ":ToggleTermSendVisualLines<cr>", { desc = ":ToggleTermSe
 -- whichkeys
 local wk = require("which-key")
 local mappings = {
-  g = {
-    name = "Git",
-    -- g = { "<cmd>lua require 'lvim.core.terminal'.lazygit_toggle(12000)<cr>", "Lazygit" },
-    -- Fugitive
-    l = { ":Git blame<cr>", "Blame" },
-    -- c = { ":Git commit<cr>", "Commit" },
-    ca = { ":Git commit --amend<cr>", "Commit amend" },
-    -- p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-    P = { ":Git push<cr>", "Push" },
-    p = { ":Git pull<cr>", "pull" },
-    r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-    j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
-    k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-    R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-    s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-    u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk" },
-    d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
-    n = { ":!git checkout -b ", "Checkout New Branch" },
-    o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-    b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-    f = { "<cmd>Telescope git_bcommits<cr>", "Checkout buffer commit" },
-  },
-  c = {
-    n = { ":NullLsInfo<cr>", "NullLs Info" },
-    j = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Dianostic" },
-    k = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Previous Dianostic" },
-  },
+  -- Fugitive
+  { "<leader>gl", ":Git blame<cr>", desc = "Blame" },
+  { "<leader>gca", "Git commit --amend<cr>", desc = "Commit amend" },
+  { "<leader>gP", "Git push<cr>", desc = "Push" },
+  { "<leader>gp", "Git pull<cr>", desc = "pull" },
+  --
+  { "<leader>gr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", desc = "Reset Hunk" },
+  { "<leader>gj", "<cmd>lua require 'gitsigns'.next_hunk()<cr>", desc = "Next Hunk" },
+  { "<leader>gk", "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", desc = "Prev Hunk" },
+  { "<leader>gR", "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", desc = "Reset Buffer" },
+  { "<leader>gs", "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", desc = "Stage Hunk" },
+  { "<leader>gu", "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", desc = "Undo Stage Hunk" },
+  { "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "Diff" },
+  { "<leader>gn", ":!git checkout -b ", desc = "Checkout New Branch" },
+  { "<leader>go", "<cmd>Telescope git_status<cr>", desc = "Open changed file" },
+  { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Checkout branch" },
+  { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Checkout commit" },
+  { "<leader>gf", "<cmd>Telescope git_bcommits<cr>", desc = "Checkout buffer commit" },
+  --
+  { "<leader>cn", ":NullLsInfo<cr>", desc = "NullLs Info" },
+  { "<leader>cj", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next Dianostic" },
+  { "<leader>ck", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Previous Dianostic" },
 }
+
 local opts = { prefix = "<leader>" }
-wk.register(mappings, opts)
+-- wk.register(mappings, opts)
+wk.add(mappings, opts)
 
 function _G.set_terminal_keymaps()
   local opts = { buffer = 0 }

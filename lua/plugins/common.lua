@@ -47,7 +47,7 @@ return {
   {
     "folke/which-key.nvim",
     opts = {
-      window = {
+      win = {
         border = "rounded",
         -- winblend = 100, -- value between 0-100 0 for fully opaque and 100 for fully transparent
         -- winhighlight = "Normal:CmpDocNormal",
