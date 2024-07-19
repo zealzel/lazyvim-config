@@ -27,6 +27,8 @@ map("n", "<leader>ts", ":ToggleTermSendCurrentLine<cr>", { desc = "ToggleTermSen
 map("v", "<leader>ts", ":ToggleTermSendVisualLines<cr>", { desc = ":ToggleTermSendVisualLines<cr>" })
 -- map("v", "<leader>ts", ":ToggleTermSendVisualSelection<cr>", { desc = ":ToggleTermSendVisualSelection<cr>" })
 
+map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
 -- whichkeys
 local wk = require("which-key")
 local mappings = {
