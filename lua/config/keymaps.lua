@@ -71,3 +71,9 @@ end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+
+-- noerg
+-- remappings, ref: https://github.com/nvim-neorg/neorg/wiki/User-Keybinds
+-- vim.keymap.set("n", "\\f", "<Plug>(neorg.pivot.list.toggle)", {})
+vim.keymap.set("n", "\\tt", ":Neorg toggle-concealer<cr>", {})
+vim.keymap.set("n", "\\g", "<Plug>(neorg.looking-glass.magnify-code-block)", {})
