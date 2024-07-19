@@ -32,9 +32,9 @@ local wk = require("which-key")
 local mappings = {
   -- Fugitive
   { "<leader>gl", ":Git blame<cr>", desc = "Blame" },
-  { "<leader>gca", "Git commit --amend<cr>", desc = "Commit amend" },
-  { "<leader>gP", "Git push<cr>", desc = "Push" },
-  { "<leader>gp", "Git pull<cr>", desc = "pull" },
+  { "<leader>gca", ":Git commit --amend<cr>", desc = "Commit amend" },
+  { "<leader>gP", ":Git push<cr>", desc = "Push" },
+  { "<leader>gp", ":Git pull<cr>", desc = "pull" },
   --
   { "<leader>gr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", desc = "Reset Hunk" },
   { "<leader>gj", "<cmd>lua require 'gitsigns'.next_hunk()<cr>", desc = "Next Hunk" },
