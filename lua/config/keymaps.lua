@@ -30,6 +30,9 @@ map("v", "<leader>ts", ":ToggleTermSendVisualLines<cr>", { desc = ":ToggleTermSe
 map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 -- press ctrl+c to exit oil mode
 
+map("n", "<leader>D", ":DiffviewOpen <CR>", { desc = "DiffviewOpen" })
+map("n", "<leader>C", ":DiffviewClose <CR>", { desc = "DiffviewClose" })
+
 -- whichkeys
 local wk = require("which-key")
 local mappings = {
