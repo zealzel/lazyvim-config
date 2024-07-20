@@ -26,6 +26,9 @@ map("n", "<C-t>", ":ToggleTerm<cr>", { desc = "toggleterm", silent = true })
 map("n", "<leader>ts", ":ToggleTermSendCurrentLine<cr>", { desc = "ToggleTermSendCurrentLine" })
 map("v", "<leader>ts", ":ToggleTermSendVisualLines<cr>", { desc = ":ToggleTermSendVisualLines<cr>" })
 
+map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+-- press ctrl+c to exit oil mode
+
 -- whichkeys
 local wk = require("which-key")
 local mappings = {
@@ -33,7 +36,7 @@ local mappings = {
   { "<leader>gl", ":Git blame<cr>", desc = "Blame" },
   { "<leader>gca", ":Git commit --amend<cr>", desc = "Commit amend" },
   { "<leader>gP", ":Git push<cr>", desc = "Push" },
-  { "<leader>gp", "Git pull<cr>", desc = "pull" },
+  { "<leader>gp", ":Git pull<cr>", desc = "pull" },
   --
   { "<leader>gr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", desc = "Reset Hunk" },
   { "<leader>gj", "<cmd>lua require 'gitsigns'.next_hunk()<cr>", desc = "Next Hunk" },

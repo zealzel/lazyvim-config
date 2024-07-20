@@ -107,4 +107,13 @@ return {
     opts = {},
   },
   { "akinsho/toggleterm.nvim", version = "*", config = true },
+  {
+    "stevearc/oil.nvim",
+    config = function()
+      require("oil").setup({})
+    end,
+    opts = {},
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+  },
 }
