@@ -28,6 +28,7 @@ map("v", "<leader>ts", ":ToggleTermSendVisualLines<cr>", { desc = ":ToggleTermSe
 -- map("v", "<leader>ts", ":ToggleTermSendVisualSelection<cr>", { desc = ":ToggleTermSendVisualSelection<cr>" })
 
 map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+-- press ctrl+c to exit oil mode
 
 -- whichkeys
 local wk = require("which-key")
