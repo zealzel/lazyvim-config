@@ -14,6 +14,7 @@ opt.timeoutlen = 1000
 -- vim.g.mkdp_auto_start = 0
 -- vim.g.mkdp_auto_close = 0
 -- vim.g.mkdp_browser = "firefox"
+-- vim.g.maplocalleader = ","
 
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"

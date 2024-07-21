@@ -32,6 +32,7 @@ map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 map("n", "<leader>D", ":DiffviewOpen <CR>", { desc = "DiffviewOpen" })
 map("n", "<leader>C", ":DiffviewClose <CR>", { desc = "DiffviewClose" })
+map("n", "<leader>F", ":DiffviewFileHistory <CR>", { desc = "DiffviewFileHistory" }) -- <tab> next commit, <s-tab> previous commit
 
 -- whichkeys
 local wk = require("which-key")
@@ -50,10 +51,10 @@ local mappings = {
   { "<leader>gu", "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", desc = "Undo Stage Hunk" },
   { "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "Diff" },
   { "<leader>gn", ":!git checkout -b ", desc = "Checkout New Branch" },
-  { "<leader>go", "<cmd>Telescope git_status<cr>", desc = "Open changed file" },
-  { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Checkout branch" },
-  { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Checkout commit" },
-  { "<leader>gf", "<cmd>Telescope git_bcommits<cr>", desc = "Checkout buffer commit" },
+  -- { "<leader>go", "<cmd>Telescope git_status<cr>", desc = "Open changed file" },
+  -- { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Checkout branch" },
+  -- { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Checkout commit" },
+  -- { "<leader>gf", "<cmd>Telescope git_bcommits<cr>", desc = "Checkout buffer commit" },
   --
   { "<leader>cn", ":NullLsInfo<cr>", desc = "NullLs Info" },
   { "<leader>cj", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next Dianostic" },
