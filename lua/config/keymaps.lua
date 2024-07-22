@@ -31,7 +31,10 @@ map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 -- press ctrl+c to exit oil mode
 
 map("n", "<leader>D", ":DiffviewOpen <CR>", { desc = "DiffviewOpen" })
-map("n", "<leader>C", ":DiffviewClose <CR>", { desc = "DiffviewClose" })
+map("n", "<leader>C", "<cmd>set hidden<cr><cmd>DiffviewClose<cr><cmd>set nohidden<cr>", { desc = "DiffviewClose" })
+
+-- map("n", "<leader>F", ":DiffviewFileHistory <CR>", { desc = "DiffviewFileHistory" }) -- <tab> next commit, <s-tab> previous commit
+-- conflict-with-noice issue: fixed keymaps as below. Ref:https://github.com/sindrets/diffview.nvim/issues/302
 map("n", "<leader>F", ":DiffviewFileHistory <CR>", { desc = "DiffviewFileHistory" }) -- <tab> next commit, <s-tab> previous commit
 
 -- whichkeys
