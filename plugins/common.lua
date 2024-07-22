@@ -104,7 +104,16 @@ return {
     keys = { -- Example mapping to toggle outline
       { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
     },
-    opts = {},
+    config = function()
+      require("outline").setup({
+        outline_window = {
+          position = "right", -- "right"
+          width = 40,
+          relative_width = false,
+          auto_jump = true,
+        },
+      })
+    end,
   },
   { "akinsho/toggleterm.nvim", version = "*", config = true },
   {
