@@ -116,4 +116,23 @@ return {
     dependencies = { { "echasnovski/mini.icons", opts = {} } },
     -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
   },
+  {
+    "stevearc/oil.nvim",
+    config = function()
+      require("oil").setup({})
+    end,
+    opts = {},
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+  },
+  "sindrets/diffview.nvim",
+  {
+    "stevearc/oil.nvim",
+    config = function()
+      require("oil").setup({})
+    end,
+    opts = {},
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+  },
 }
