@@ -12,9 +12,7 @@ map("n", "<s-tab>", ":bprevious<cr>", { desc = "Previous buffer", silent = true 
 -- map("n", "<leader>c", "<leader>bd", { desc = "Delete Buffer", remap = true, silent = true })
 
 map("n", "<C-q>", ":q<cr>", { desc = "quit current window", silent = true })
-
--- Replace a word with yanked text without changing the default register
-map("v", "p", 'p:let @"=@0<CR>', { desc = "paste", remap = true, silent = true })
+map("v", "p", 'P:let @"=@0<CR>', { desc = "paste", remap = true, silent = true })
 
 map("n", "Z", "za", { desc = "toggle fold" })
 
@@ -22,12 +20,22 @@ map("n", "<C-g>", ":vertical :Git <CR>", { desc = "fugitive Git", silent = true 
 
 map("n", "<C-n>", ":Neotree toggle<cr>", { desc = "Neotree toggle", silent = true })
 
+-- unmap("n", "<C-/>", { desc = "Lazyterm" })
+-- map("n", "<C-\\>", ":ToggleTerm<cr>", { desc = "toggleterm", silent = true })
 map("n", "<C-t>", ":ToggleTerm<cr>", { desc = "toggleterm", silent = true })
 map("n", "<leader>ts", ":ToggleTermSendCurrentLine<cr>", { desc = "ToggleTermSendCurrentLine" })
 map("v", "<leader>ts", ":ToggleTermSendVisualLines<cr>", { desc = ":ToggleTermSendVisualLines<cr>" })
+-- map("v", "<leader>ts", ":ToggleTermSendVisualSelection<cr>", { desc = ":ToggleTermSendVisualSelection<cr>" })
 
 map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 -- press ctrl+c to exit oil mode
+
+map("n", "<leader>D", ":DiffviewOpen <CR>", { desc = "DiffviewOpen" })
+map("n", "<leader>C", "<cmd>set hidden<cr><cmd>DiffviewClose<cr><cmd>set nohidden<cr>", { desc = "DiffviewClose" })
+
+-- map("n", "<leader>F", ":DiffviewFileHistory <CR>", { desc = "DiffviewFileHistory" }) -- <tab> next commit, <s-tab> previous commit
+-- conflict-with-noice issue: fixed keymaps as below. Ref:https://github.com/sindrets/diffview.nvim/issues/302
+map("n", "<leader>F", ":DiffviewFileHistory <CR>", { desc = "DiffviewFileHistory" }) -- <tab> next commit, <s-tab> previous commit
 
 -- whichkeys
 local wk = require("which-key")
@@ -46,10 +54,10 @@ local mappings = {
   { "<leader>gu", "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", desc = "Undo Stage Hunk" },
   { "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "Diff" },
   { "<leader>gn", ":!git checkout -b ", desc = "Checkout New Branch" },
-  { "<leader>go", "<cmd>Telescope git_status<cr>", desc = "Open changed file" },
-  { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Checkout branch" },
-  { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Checkout commit" },
-  { "<leader>gf", "<cmd>Telescope git_bcommits<cr>", desc = "Checkout buffer commit" },
+  -- { "<leader>go", "<cmd>Telescope git_status<cr>", desc = "Open changed file" },
+  -- { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Checkout branch" },
+  -- { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Checkout commit" },
+  -- { "<leader>gf", "<cmd>Telescope git_bcommits<cr>", desc = "Checkout buffer commit" },
   --
   { "<leader>cn", ":NullLsInfo<cr>", desc = "NullLs Info" },
   { "<leader>cj", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next Dianostic" },
