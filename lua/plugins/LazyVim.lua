@@ -1,12 +1,12 @@
 return {
   -- Configure LazyVim to load gruvbox
   "LazyVim/LazyVim",
-  opts = {
-    colorscheme = "tokyonight-night", -- moon, storm, night, day
-  },
   -- opts = {
-  --   colorscheme = "gruvbox",
+  --   colorscheme = "tokyonight-night", -- moon, storm, night, day
   -- },
+  opts = {
+    colorscheme = "gruvbox",
+  },
   -- opts = {
   --   colorscheme = "catppuccin-macchiato", -- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
   --   integrations = {
