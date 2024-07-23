@@ -23,7 +23,7 @@ return {
     sections = {
       lualine_a = { "mode" },
       lualine_b = {
-        "branch",
+        { "branch", color = { fg = "yellow" } },
         LazyVim.lualine.root_dir(),
         -- { "filetype", icon_only = false, separator = "", padding = { left = 1, right = 0 } },
         { LazyVim.lualine.pretty_path() },
