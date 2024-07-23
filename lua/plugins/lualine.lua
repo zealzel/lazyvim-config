@@ -1,5 +1,7 @@
 return {
   "nvim-lualine/lualine.nvim",
+  -- config = function()
+  --   require("lualine").setup({
   opts = {
     options = {
       icons_enabled = true,
@@ -16,14 +18,17 @@ return {
       refresh = {
         statusline = 1000,
         tabline = 1000,
-        winbar = 1000,
       },
     },
     sections = {
       lualine_a = { "mode" },
-      -- lualine_b = { "branch", "diff", "diagnostics" },
       lualine_b = {
         "branch",
+        LazyVim.lualine.root_dir(),
+        -- { "filetype", icon_only = false, separator = "", padding = { left = 1, right = 0 } },
+        { LazyVim.lualine.pretty_path() },
+      },
+      lualine_c = {
         {
           "diff",
           symbols = {
@@ -42,6 +47,8 @@ return {
             end
           end,
         },
+      },
+      lualine_x = {
         {
           "diagnostics",
           symbols = {
@@ -52,22 +59,20 @@ return {
           },
         },
       },
-      -- lualine_c = { "filename" },
-      lualine_c = {
-        LazyVim.lualine.root_dir(),
-        -- { "filetype", icon_only = false, separator = "", padding = { left = 1, right = 0 } },
-        { LazyVim.lualine.pretty_path() },
+      lualine_y = {
+        { "progress", separator = " ", padding = { left = 1, right = 0 } },
+        { "location", padding = { left = 0, right = 1 } },
       },
-      -- lualine_x = { "encoding", "fileformat", "filetype" },
-      lualine_y = { "progress" },
-      lualine_z = { "location" },
+      lualine_z = {
+        function()
+          return " " .. os.date("%R")
+        end,
+      },
     },
-    inactive_sections = {},
-    tabline = {},
-    winbar = {},
-    inactive_winbar = {},
-    extensions = {},
   },
+  --   })
+  -- end,
+
   ------- default as below -------
   --
   -- config = function()
