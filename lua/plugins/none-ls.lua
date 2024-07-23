@@ -8,7 +8,7 @@ return {
         nls.builtins.formatting.black,
         nls.builtins.formatting.stylua,
         nls.builtins.formatting.shfmt,
-        nls.builtins.diagnostics.mypy,
+        -- nls.builtins.diagnostics.mypy,
         -- nls.builtins.completion.spell,
       },
     })
