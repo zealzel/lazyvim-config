@@ -1,13 +1,6 @@
 return {
   { "ellisonleao/gruvbox.nvim" },
   -- { "tpope/vim-obsession" },
-  {
-    -- Configure LazyVim to load gruvbox
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "gruvbox",
-    },
-  },
   { "sunaku/tmux-navigate" },
   { "nvimdev/lspsaga.nvim" },
   {
