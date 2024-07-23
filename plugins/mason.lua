@@ -11,7 +11,7 @@ return {
       "shfmt",
       "flake8",
       "black",
-      "mypy",
+      -- "mypy",
     },
   },
 }
