@@ -49,6 +49,7 @@ return {
         },
       },
       lualine_x = {
+        { "filetype", icon_only = false, separator = "", padding = { left = 1, right = 0 } },
         {
           "diagnostics",
           sources = { "nvim_diagnostic", "nvim_lsp" },
