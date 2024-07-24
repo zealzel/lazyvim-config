@@ -12,7 +12,7 @@ map("n", "<s-tab>", ":bprevious<cr>", { desc = "Previous buffer", silent = true 
 -- map("n", "<leader>c", "<leader>bd", { desc = "Delete Buffer", remap = true, silent = true })
 
 map("n", "<C-q>", ":q<cr>", { desc = "quit current window", silent = true })
--- map("v", "p", '""p:let @"=@0<CR>', { desc = "paste", remap = true, silent = true })
+map("v", "p", 'P:let @"=@0<CR>', { desc = "paste", remap = true, silent = true })
 
 map("n", "Z", "za", { desc = "toggle fold" })
 
@@ -20,35 +20,87 @@ map("n", "<C-g>", ":vertical :Git <CR>", { desc = "fugitive Git", silent = true 
 
 map("n", "<C-n>", ":Neotree toggle<cr>", { desc = "Neotree toggle", silent = true })
 
+-- unmap("n", "<C-/>", { desc = "Lazyterm" })
+-- map("n", "<C-\\>", ":ToggleTerm<cr>", { desc = "toggleterm", silent = true })
+map("n", "<C-t>", ":ToggleTerm<cr>", { desc = "toggleterm", silent = true })
+map("n", "<leader>ts", ":ToggleTermSendCurrentLine<cr>", { desc = "ToggleTermSendCurrentLine" })
+map("v", "<leader>ts", ":ToggleTermSendVisualLines<cr>", { desc = ":ToggleTermSendVisualLines<cr>" })
+-- map("v", "<leader>ts", ":ToggleTermSendVisualSelection<cr>", { desc = ":ToggleTermSendVisualSelection<cr>" })
+
+map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+-- press ctrl+c to exit oil mode
+
+map("n", "<leader>D", ":DiffviewOpen <CR>", { desc = "DiffviewOpen" })
+map("n", "<leader>C", "<cmd>set hidden<cr><cmd>DiffviewClose<cr><cmd>set nohidden<cr>", { desc = "DiffviewClose" })
+
+-- map("n", "<leader>F", ":DiffviewFileHistory <CR>", { desc = "DiffviewFileHistory" }) -- <tab> next commit, <s-tab> previous commit
+-- conflict-with-noice issue: fixed keymaps as below. Ref:https://github.com/sindrets/diffview.nvim/issues/302
+map("n", "<leader>F", ":DiffviewFileHistory <CR>", { desc = "DiffviewFileHistory" }) -- <tab> next commit, <s-tab> previous commit
+
 -- whichkeys
 local wk = require("which-key")
 local mappings = {
-  g = {
-    name = "Git",
-    -- g = { "<cmd>lua require 'lvim.core.terminal'.lazygit_toggle(12000)<cr>", "Lazygit" },
-    -- Fugitive
-    l = { ":Git blame<cr>", "Blame" },
-    -- c = { ":Git commit<cr>", "Commit" },
-    ca = { ":Git commit --amend<cr>", "Commit amend" },
-    p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-    r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-    j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
-    k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-    R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-    s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-    u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk" },
-    d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
-    n = { ":!git checkout -b ", "Checkout New Branch" },
-    o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-    b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-    f = { "<cmd>Telescope git_bcommits<cr>", "Checkout buffer commit" },
-  },
-  c = {
-    n = { ":NullLsInfo<cr>", "NullLs Info" },
-    j = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Dianostic" },
-    k = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Previous Dianostic" },
-  },
+  -- Fugitive
+  { "<leader>gl", ":Git blame<cr>", desc = "Blame" },
+  { "<leader>gca", ":Git commit --amend<cr>", desc = "Commit amend" },
+  { "<leader>gP", ":Git push<cr>", desc = "Push" },
+  { "<leader>gp", ":Git pull<cr>", desc = "pull" },
+  --
+  { "<leader>gr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", desc = "Reset Hunk" },
+  { "<leader>gj", "<cmd>lua require 'gitsigns'.next_hunk()<cr>", desc = "Next Hunk" },
+  { "<leader>gk", "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", desc = "Prev Hunk" },
+  { "<leader>gR", "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", desc = "Reset Buffer" },
+  { "<leader>gs", "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", desc = "Stage Hunk" },
+  { "<leader>gu", "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", desc = "Undo Stage Hunk" },
+  { "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "Diff" },
+  { "<leader>gn", ":!git checkout -b ", desc = "Checkout New Branch" },
+  -- { "<leader>go", "<cmd>Telescope git_status<cr>", desc = "Open changed file" },
+  -- { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Checkout branch" },
+  -- { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Checkout commit" },
+  -- { "<leader>gf", "<cmd>Telescope git_bcommits<cr>", desc = "Checkout buffer commit" },
+  --
+  { "<leader>cn", ":NullLsInfo<cr>", desc = "NullLs Info" },
+  { "<leader>cj", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next Dianostic" },
+  { "<leader>ck", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Previous Dianostic" },
 }
+
 local opts = { prefix = "<leader>" }
-wk.register(mappings, opts)
+-- wk.register(mappings, opts)
+wk.add(mappings, opts)
+
+function _G.set_terminal_keymaps()
+  local opts = { buffer = 0 }
+  vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
+  vim.keymap.set("t", "<C-t>", [[<C-\><C-n><Cmd>ToggleTermToggleAll<CR>]], opts)
+  vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
+  vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
+  vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
+  vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
+  vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
+end
+
+-- if you only want these mappings for toggle term use term://*toggleterm#* instead
+vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+
+-- noerg
+-- remappings, ref: https://github.com/nvim-neorg/neorg/wiki/User-Keybinds
+-- vim.keymap.set("n", "\\f", "<Plug>(neorg.pivot.list.toggle)", {})
+vim.keymap.set("n", "\\tt", ":Neorg toggle-concealer<cr>", {})
+vim.keymap.set("n", "\\g", "<Plug>(neorg.looking-glass.magnify-code-block)", {})
+
+local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
+
+-- Repeat movement with ; and ,
+-- ensure ; goes forward and , goes backward regardless of the last direction
+vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move_next)
+vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_previous)
+
+-- vim way: ; goes to the direction you were moving.
+-- vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
+-- vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
+
+-- Optionally, make builtin f, F, t, T also repeatable with ; and ,
+vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f_expr, { expr = true })
+vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F_expr, { expr = true })
+vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t_expr, { expr = true })
+vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T_expr, { expr = true })
