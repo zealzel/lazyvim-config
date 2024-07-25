@@ -35,7 +35,7 @@ map("n", "<leader>C", "<cmd>set hidden<cr><cmd>DiffviewClose<cr><cmd>set nohidde
 
 -- map("n", "<leader>F", ":DiffviewFileHistory <CR>", { desc = "DiffviewFileHistory" }) -- <tab> next commit, <s-tab> previous commit
 -- conflict-with-noice issue: fixed keymaps as below. Ref:https://github.com/sindrets/diffview.nvim/issues/302
-map("n", "<leader>F", ":DiffviewFileHistory <CR>", { desc = "DiffviewFileHistory" }) -- <tab> next commit, <s-tab> previous commit
+map("n", "<leader>F", ":DiffviewFileHistory %<CR>", { desc = "DiffviewFileHistory" }) -- <tab> next commit, <s-tab> previous commit
 
 -- whichkeys
 local wk = require("which-key")
