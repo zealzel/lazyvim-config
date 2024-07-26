@@ -22,5 +22,6 @@ return {
     opts.sources = opts.sources or {}
     -- table.insert(opts.sources, nls.builtins.formatting.prettier) -- prettier extra plugin
     -- table.insert(opts.sources, nls.builtins.formatting.black) -- black extra plugin
+    table.insert(opts.sources, nls.builtins.formatting.cmake_format)
   end,
 }
