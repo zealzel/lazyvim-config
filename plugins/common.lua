@@ -33,17 +33,6 @@ return {
     },
   },
   {
-    "neovim/nvim-lspconfig",
-    opts = {
-      diagnostics = {
-        float = {
-          border = "rounded",
-          -- winhighlight = "Normal:CmpDocNormal",
-        },
-      },
-    },
-  },
-  {
     "folke/which-key.nvim",
     opts = {
       win = {
