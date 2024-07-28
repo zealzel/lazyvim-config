@@ -1,5 +1,20 @@
 return {
   {
+    "neovim/nvim-lspconfig",
+    opts = function(_, opts)
+      opts.diagnostics = {
+        float = { border = "rounded" },
+      }
+      opts.servers.basedpyright = {
+        settings = {
+          basedpyright = {
+            analysis = { typeCheckingMode = "off" },
+          },
+        },
+      }
+    end,
+  },
+  {
     "stevearc/conform.nvim",
     opts = function(_, opts)
       opts.formatters_by_ft["python"] = { "black" }
