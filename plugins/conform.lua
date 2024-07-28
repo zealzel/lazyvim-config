@@ -4,30 +4,31 @@ return {
   opts = function(_, opts)
     -- prettier default
     local supported = {
-      "css",
-      "graphql",
-      "handlebars",
-      "html",
-      "javascript",
-      "javascriptreact",
-      "json",
-      "jsonc",
-      "less",
-      "markdown",
-      "markdown.mdx",
-      "scss",
-      "typescript",
-      "typescriptreact",
-      "vue",
-      "yaml",
+      ["css"] = { "prettier" },
+      ["graphql"] = { "prettier" },
+      ["handlebars"] = { "prettier" },
+      ["html"] = { "prettier" },
+      ["javascript"] = { "prettier" },
+      ["javascriptreact"] = { "prettier" },
+      ["json"] = { "prettier" },
+      ["jsonc"] = { "prettier" },
+      ["less"] = { "prettier" },
+      ["markdown"] = { "prettier" },
+      ["markdown.mdx"] = { "prettier" },
+      ["scss"] = { "prettier" },
+      ["typescript"] = { "prettier" },
+      ["typescriptreact"] = { "prettier" },
+      ["vue"] = { "prettier" },
+      ["yaml"] = { "prettier" },
+      -- python
+      ["python"] = { "black" },
+      -- cmake
+      -- ["cmake"] = { "cmake_format" },
     }
     opts.formatters_by_ft = opts.formatters_by_ft or {}
-    for _, ft in ipairs(supported) do
-      opts.formatters_by_ft[ft] = { "prettier" }
+    for ft, lsp in pairs(supported) do
+      opts.formatters_by_ft[ft] = lsp
     end
-    -- opts.formatters_by_ft = {
-    --   cmake = { "cmake_format" },
-    -- }
 
     opts.formatters = opts.formatters or {}
     opts.formatters.prettier = {

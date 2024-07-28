@@ -1,0 +1,43 @@
+return {
+  "neovim/nvim-lspconfig",
+  enable = false,
+  opts = {
+    diagnostics = {
+      float = {
+        border = "rounded",
+        -- winhighlight = "Normal:CmpDocNormal",
+      },
+    },
+    -- python
+    servers = {
+      basedpyright = {
+        settings = {
+          -- ref: https://github.com/LazyVim/LazyVim/discussions/3350
+          basedpyright = {
+            analysis = {
+              typeCheckingMode = "off", -- off|standard|strict
+            },
+          },
+        },
+      },
+    },
+    -- c/c++
+    setup = {
+      clangd = function(_, opts)
+        opts.capabilities.offsetEncoding = { "utf-16" }
+      end,
+    },
+    -- servers = {
+    -- not working, use .clangd file instead
+    -- ref: https://clangd.llvm.org/config.html#clangtidy
+    -- clangd = {
+    --   settings = {
+    --     clangd = {
+    --       Diagnostics = { UnusedIncludes = "None" }, -- None|Strict
+    --       -- UnusedIncludes = "Strict",
+    --     },
+    --   },
+    -- },
+    -- },
+  },
+}
