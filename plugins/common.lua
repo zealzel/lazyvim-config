@@ -26,29 +26,6 @@ return {
     },
   },
   {
-    "neovim/nvim-lspconfig",
-    opts = {
-      diagnostics = {
-        float = {
-          border = "rounded",
-          -- winhighlight = "Normal:CmpDocNormal",
-        },
-      },
-      servers = {
-        basedpyright = {
-          settings = {
-            -- ref: https://github.com/LazyVim/LazyVim/discussions/3350
-            basedpyright = {
-              analysis = {
-                typeCheckingMode = "off", -- off|standard|strict
-              },
-            },
-          },
-        },
-      },
-    },
-  },
-  {
     "folke/which-key.nvim",
     opts = {
       win = {
