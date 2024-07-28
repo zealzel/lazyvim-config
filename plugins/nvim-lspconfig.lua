@@ -5,16 +5,16 @@ return {
       float = { border = "rounded" },
     }
     -- python lsp: basedpyright
-    opts.servers.basedpyright = {
-      settings = {
-        basedpyright = {
-          analysis = { typeCheckingMode = "off" },
-        },
-      },
-    }
+    -- opts.servers.basedpyright = {
+    --   settings = {
+    --     basedpyright = {
+    --       analysis = { typeCheckingMode = "off" },
+    --     },
+    --   },
+    -- }
     -- c/c++ lsp: clangd
-    opts.setup.clangd = function(_, opts)
-      opts.capabilities.offsetEncoding = { "utf-16" }
-    end
+    -- opts.setup.clangd = function(_, opts)
+    --   opts.capabilities.offsetEncoding = { "utf-16" }
+    -- end
   end,
 }
