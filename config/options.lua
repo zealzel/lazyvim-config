@@ -20,3 +20,5 @@ opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldlevel = 99
 
 vim.o.shell = "bash"
+
+vim.g.lazyvim_python_lsp = "basedpyright"
