@@ -1,19 +1,20 @@
 return {
-  "stevearc/conform.nvim",
-  optional = true,
+  "neovim/nvim-lspconfig",
   opts = function(_, opts)
-    local supported = {}
-
-    -- python
-    supported["python"] = { "black" }
-
-    -- cmake
-    -- supported["cmake"] = { "cmake_format" }
-
-    opts.formatters_by_ft = opts.formatters_by_ft or {}
-    -- end
-    for ft, lsp in pairs(supported) do
-      opts.formatters_by_ft[ft] = lsp
+    opts.diagnostics = {
+      float = { border = "rounded" },
+    }
+    -- python lsp: basedpyright
+    opts.servers.basedpyright = {
+      settings = {
+        basedpyright = {
+          analysis = { typeCheckingMode = "off" },
+        },
+      },
+    }
+    -- c/c++ lsp: clangd
+    opts.setup.clangd = function(_, opts)
+      opts.capabilities.offsetEncoding = { "utf-16" }
     end
   end,
 }
