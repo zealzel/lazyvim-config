@@ -2,30 +2,33 @@ return {
   "stevearc/conform.nvim",
   optional = true,
   opts = function(_, opts)
+    local supported = {}
+
     -- prettier default
-    local supported = {
-      ["css"] = { "prettier" },
-      ["graphql"] = { "prettier" },
-      ["handlebars"] = { "prettier" },
-      ["html"] = { "prettier" },
-      ["javascript"] = { "prettier" },
-      ["javascriptreact"] = { "prettier" },
-      ["json"] = { "prettier" },
-      ["jsonc"] = { "prettier" },
-      ["less"] = { "prettier" },
-      ["markdown"] = { "prettier" },
-      ["markdown.mdx"] = { "prettier" },
-      ["scss"] = { "prettier" },
-      ["typescript"] = { "prettier" },
-      ["typescriptreact"] = { "prettier" },
-      ["vue"] = { "prettier" },
-      ["yaml"] = { "prettier" },
-      -- python
-      ["python"] = { "black" },
-      -- cmake
-      -- ["cmake"] = { "cmake_format" },
-    }
+    supported["css"] = { "prettier" }
+    supported["graphql"] = { "prettier" }
+    supported["handlebars"] = { "prettier" }
+    supported["html"] = { "prettier" }
+    supported["javascript"] = { "prettier" }
+    supported["javascriptreact"] = { "prettier" }
+    supported["json"] = { "prettier" }
+    supported["jsonc"] = { "prettier" }
+    supported["less"] = { "prettier" }
+    supported["markdown"] = { "prettier" }
+    supported["markdown.mdx"] = { "prettier" }
+    supported["scss"] = { "prettier" }
+    supported["typescript"] = { "prettier" }
+    supported["typescriptreact"] = { "prettier" }
+    supported["vue"] = { "prettier" }
+    supported["yaml"] = { "prettier" }
+
+    -- python
+    supported["python"] = { "black" }
+    -- cmake
+    supported["cmake"] = { "cmake_format" }
+
     opts.formatters_by_ft = opts.formatters_by_ft or {}
+    -- end
     for ft, lsp in pairs(supported) do
       opts.formatters_by_ft[ft] = lsp
     end
