@@ -5,7 +5,7 @@ return {
       opts.servers.basedpyright = {
         settings = {
           basedpyright = {
-            analysis = { typeCheckingMode = "off" },
+            analysis = { typeCheckingMode = "off" }, -- strict|standard|basic|off
           },
         },
       }

@@ -13,8 +13,8 @@ return {
     --   },
     -- }
     -- c/c++ lsp: clangd
-    opts.setup.clangd = function(_, opts)
-      opts.capabilities.offsetEncoding = { "utf-16" }
-    end
+    -- opts.setup.clangd = function(_, opts)
+    --   opts.capabilities.offsetEncoding = { "utf-16" }
+    -- end
   end,
 }
