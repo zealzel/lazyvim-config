@@ -3,13 +3,13 @@ return {
   main = "ibl",
   opts = function(_, opts)
     local highlight = {
-      "RainbowBlue",
       "RainbowYellow",
+      "RainbowCyan",
+      "RainbowBlue",
       "RainbowRed",
       "RainbowOrange",
       "RainbowGreen",
       "RainbowViolet",
-      "RainbowCyan",
     }
     local hooks = require("ibl.hooks")
 
@@ -23,6 +23,7 @@ return {
       vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
     end)
     hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
+
     -- opts.indent = {
     --   highlight = highlight,
     --   -- char = "",
