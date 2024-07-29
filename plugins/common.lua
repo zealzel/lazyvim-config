@@ -43,25 +43,25 @@ return {
       },
     },
   },
-  {
-    -- Markdown preview
-    -- ref: https://www.reddit.com/r/neovim/comments/10w4u51/comment/j7lpl9u/?utm_source=share&utm_medium=web2x&context=3
-    "iamcco/markdown-preview.nvim",
-    build = function()
-      vim.fn["mkdp#util#install"]()
-    end,
-  },
-  {
-    "ellisonleao/glow.nvim",
-    config = true,
-    cmd = "Glow",
-    opts = {
-      -- width = 80,
-      -- height = 100,
-      width = 160,
-      height = 200,
-    },
-  },
+  -- {
+  --   -- Markdown preview
+  --   -- ref: https://www.reddit.com/r/neovim/comments/10w4u51/comment/j7lpl9u/?utm_source=share&utm_medium=web2x&context=3
+  --   "iamcco/markdown-preview.nvim",
+  --   build = function()
+  --     vim.fn["mkdp#util#install"]()
+  --   end,
+  -- },
+  -- {
+  --   "ellisonleao/glow.nvim",
+  --   config = true,
+  --   cmd = "Glow",
+  --   opts = {
+  --     -- width = 80,
+  --     -- height = 100,
+  --     width = 160,
+  --     height = 200,
+  --   },
+  -- },
   {
     "echasnovski/mini.nvim",
     version = false,
