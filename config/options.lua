@@ -26,4 +26,4 @@ vim.o.shell = "bash"
 -- set python lsp as basedpyright instead of pyright
 -- https://github.com/DetachHead/basedpyright
 -- ref: https://github.com/LazyVim/LazyVim/discussions/3350
--- vim.g.lazyvim_python_lsp = "basedpyright"
+vim.g.lazyvim_python_lsp = "basedpyright"
