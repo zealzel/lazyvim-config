@@ -2,7 +2,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
-      vim.g.lazyvim_python_lsp = "basedpyright"
       opts.servers.basedpyright = {
         settings = {
           basedpyright = {
