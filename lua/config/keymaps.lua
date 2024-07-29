@@ -39,6 +39,7 @@ map("n", "<leader>F", ":DiffviewFileHistory %<CR>", { desc = "DiffviewFileHistor
 
 -- add thie mapping again even it exists in layzvim
 map("n", "<leader>cl", "<cmd>LspInfo<cr>", { desc = "Lsp Info" })
+map("n", "<leader>cN", "<cmd>ConformInfo<cr>", { desc = "Conform Info" })
 
 -- whichkeys
 local wk = require("which-key")
