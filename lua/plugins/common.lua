@@ -61,15 +61,15 @@ return {
     priority = 1000,
     config = true,
   },
-  {
-    "ellisonleao/glow.nvim",
-    config = true,
-    cmd = "Glow",
-    opts = {
-      width = 160,
-      height = 200,
-    },
-  },
+  -- {
+  --   "ellisonleao/glow.nvim",
+  --   config = true,
+  --   cmd = "Glow",
+  --   opts = {
+  --     width = 160,
+  --     height = 200,
+  --   },
+  -- },
   {
     "echasnovski/mini.nvim",
     version = false,
