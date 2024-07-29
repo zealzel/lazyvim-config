@@ -57,7 +57,6 @@ return {
   --     table.insert(opts.ensure_installed, "black")
   --     -- table.insert(opts.ensure_installed, "flake8")
   --     -- table.insert(opts.ensure_installed, "mypy")
-  --     opts.ui.border = "rounded"
   --   end,
   -- },
   -- Uncomment below if you want to use black provided by none-ls
