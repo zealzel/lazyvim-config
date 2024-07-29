@@ -5,27 +5,27 @@ return {
     local supported = {}
 
     -- prettier default
-    supported["css"] = { "prettier" }
-    supported["graphql"] = { "prettier" }
-    supported["handlebars"] = { "prettier" }
-    supported["html"] = { "prettier" }
-    supported["javascript"] = { "prettier" }
-    supported["javascriptreact"] = { "prettier" }
-    supported["json"] = { "prettier" }
-    supported["jsonc"] = { "prettier" }
-    supported["less"] = { "prettier" }
-    supported["markdown"] = { "prettier" }
-    supported["markdown.mdx"] = { "prettier" }
-    supported["scss"] = { "prettier" }
-    supported["typescript"] = { "prettier" }
-    supported["typescriptreact"] = { "prettier" }
-    supported["vue"] = { "prettier" }
-    supported["yaml"] = { "prettier" }
+    -- supported["css"] = { "prettier" }
+    -- supported["graphql"] = { "prettier" }
+    -- supported["handlebars"] = { "prettier" }
+    -- supported["html"] = { "prettier" }
+    -- supported["javascript"] = { "prettier" }
+    -- supported["javascriptreact"] = { "prettier" }
+    -- supported["json"] = { "prettier" }
+    -- supported["jsonc"] = { "prettier" }
+    -- supported["less"] = { "prettier" }
+    -- supported["markdown"] = { "prettier" }
+    -- supported["markdown.mdx"] = { "prettier" }
+    -- supported["scss"] = { "prettier" }
+    -- supported["typescript"] = { "prettier" }
+    -- supported["typescriptreact"] = { "prettier" }
+    -- supported["vue"] = { "prettier" }
+    -- supported["yaml"] = { "prettier" }
 
     -- python
-    supported["python"] = { "black" }
+    -- supported["python"] = { "black" }
     -- cmake
-    supported["cmake"] = { "cmake_format" }
+    -- supported["cmake"] = { "cmake_format" }
 
     opts.formatters_by_ft = opts.formatters_by_ft or {}
     -- end
