@@ -1,4 +1,5 @@
 return {
+  "tpope/vim-fugitive",
   "williamboman/mason-lspconfig.nvim",
   "ellisonleao/gruvbox.nvim",
   "sunaku/tmux-navigate",
