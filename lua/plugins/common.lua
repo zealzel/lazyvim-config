@@ -1,8 +1,14 @@
 return {
-  { "ellisonleao/gruvbox.nvim" },
-  -- { "tpope/vim-obsession" },
-  { "sunaku/tmux-navigate" },
-  { "nvimdev/lspsaga.nvim" },
+  "tpope/vim-fugitive",
+  "ellisonleao/gruvbox.nvim",
+  "sunaku/tmux-navigate",
+  "nvimdev/lspsaga.nvim",
+  "williamboman/mason-lspconfig.nvim",
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+  },
   {
     "folke/noice.nvim",
     opts = {
