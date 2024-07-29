@@ -60,8 +60,6 @@ return {
     config = true,
     cmd = "Glow",
     opts = {
-      -- width = 80,
-      -- height = 100,
       width = 160,
       height = 200,
     },
@@ -69,11 +67,6 @@ return {
   {
     "echasnovski/mini.nvim",
     version = false,
-    -- config = function()
-    --   require("mini.animate").setup({
-    --     -- Configuration here, or leave empty to use defaults
-    --   })
-    -- end,
   },
   {
     "folke/edgy.nvim",
@@ -130,16 +123,4 @@ return {
       require("render-markdown").setup({})
     end,
   },
-  -- {
-  --   "SmiteshP/nvim-navic",
-  --   opts = function()
-  --     return {
-  --       separator = " ",
-  --       highlight = true,
-  --       depth_limit = 5,
-  --       icons = LazyVim.config.icons.kinds,
-  --       lazy_update_context = true,
-  --     }
-  --   end,
-  -- },
 }
