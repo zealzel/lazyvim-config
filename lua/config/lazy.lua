@@ -22,7 +22,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.cmake" },
     { import = "lazyvim.plugins.extras.lang.python" },
     { import = "lazyvim.plugins.extras.lang.json" },
-    { import = "lazyvim.plugins.extras.lang.markdown" }, -- lsp: marksman | format/lint: markdownlint-cli2,markdown-toc
+    -- { import = "lazyvim.plugins.extras.lang.markdown" }, -- lsp: marksman | format/lint: markdownlint-cli2,markdown-toc
     { import = "lazyvim.plugins.extras.lang.typescript" },
     ---- formatting
     { import = "lazyvim.plugins.extras.formatting.prettier" },
