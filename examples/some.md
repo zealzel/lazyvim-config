@@ -14,11 +14,25 @@ docker images
 docker rmi some_image
 ```
 
+---
+
 ### create image from container
 
 ```bash
 docker commit some_container some_image
 ```
+
+- Programming languages
+  1. [ ] python
+  2. [ ] C++
+  3. [x] javascript
+
+Some of these words _are emphasized_.
+
+> This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+> consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+
+````python
 
 ```python
 import os
@@ -26,7 +40,7 @@ import sys
 
 if __name__ == "__main__":
     print("Hello World")
-```
+````
 
 ````
 

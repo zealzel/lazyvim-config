@@ -110,12 +110,17 @@ return {
       file_types = { "markdown", "norg", "rmd", "org" },
       code = {
         sign = false,
-        width = "block",
         right_pad = 1,
+      },
+      anti_conceal = {
+        -- This enables hiding any added text on the line the cursor is on
+        -- This does have a performance penalty as we must listen to the 'CursorMoved' event
+        enabled = false,
       },
       heading = {
         sign = false,
         position = "inline",
+        width = "full", -- | block | full
         icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " },
 
         -- Heading colors (when not hovered over), extends through the entire line
@@ -153,7 +158,42 @@ return {
         },
       },
     },
-    ft = { "markdown", "norg", "rmd", "org" },
+    code = {
+      -- Turn on / off code block & inline code rendering
+      enabled = true,
+      -- Turn on / off any sign column related rendering
+      sign = true,
+      -- Determines how code blocks & inline code are rendered:
+      --  none: disables all rendering
+      --  normal: adds highlight group to code blocks & inline code, adds padding to code blocks
+      --  language: adds language icon to sign column if enabled and icon + name above code blocks
+      --  full: normal + language
+      style = "full",
+      -- Amount of padding to add to the left of code blocks
+      left_pad = 0,
+      -- Amount of padding to add to the right of code blocks when width is 'block'
+      right_pad = 0,
+      -- Width of the code block background:
+      --  block: width of the code block
+      --  full: full width of the window
+      width = "full",
+      -- Determins how the top / bottom of code block are rendered:
+      --  thick: use the same highlight as the code body
+      --  thin: when lines are empty overlay the above & below icons
+      border = "thick",
+      -- Used above code blocks for thin border
+      -- above = "▄",
+      -- below = "▀",
+      -- above = "▄",
+      -- below = "▄",
+      -- Used below code blocks for thin border
+      above = "▀",
+      below = "▀",
+      -- Highlight for code blocks & inline code
+      highlight = "RenderMarkdownCode",
+      highlight_inline = "RenderMarkdownCodeInline",
+    },
+    -- ft = { "markdown", "norg", "rmd", "org" },
     config = function(_, opts)
       require("render-markdown").setup(opts)
       LazyVim.toggle.map("<leader>um", {
