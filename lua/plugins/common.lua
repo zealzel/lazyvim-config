@@ -129,4 +129,5 @@ return {
   --     require("render-markdown").setup({})
   --   end,
   -- },
+  "tribela/vim-transparent",
 }
