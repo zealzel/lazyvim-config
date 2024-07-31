@@ -16,7 +16,8 @@ map("v", "p", 'P:let @"=@0<CR>', { desc = "paste", remap = true, silent = true }
 
 map("n", "Z", "za", { desc = "toggle fold" })
 
-map("n", "<C-g>", ":vertical :Git <CR>", { desc = "fugitive Git", silent = true })
+-- map("n", "<C-g>", ":vertical :Git <CR>", { desc = "fugitive Git", silent = true })
+map("n", "<C-g>", ":Neogit <CR>", { desc = "Neogit status", silent = true })
 
 map("n", "<C-n>", ":Neotree toggle<cr>", { desc = "Neotree toggle", silent = true })
 
@@ -47,10 +48,10 @@ map("n", "<leader>LE", "<cmd>LazyExtras<cr>", { desc = "Conform Info" })
 local wk = require("which-key")
 local mappings = {
   -- Fugitive
-  { "<leader>gl", ":Git blame<cr>", desc = "Blame" },
-  { "<leader>gca", ":Git commit --amend<cr>", desc = "Commit amend" },
-  { "<leader>gP", ":Git push<cr>", desc = "Push" },
-  { "<leader>gp", ":Git pull<cr>", desc = "pull" },
+  -- { "<leader>gl", ":Git blame<cr>", desc = "Blame" },
+  -- { "<leader>gca", ":Git commit --amend<cr>", desc = "Commit amend" },
+  -- { "<leader>gP", ":Git push<cr>", desc = "Push" },
+  -- { "<leader>gp", ":Git pull<cr>", desc = "pull" },
   --
   { "<leader>gr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", desc = "Reset Hunk" },
   { "<leader>gj", "<cmd>lua require 'gitsigns'.next_hunk()<cr>", desc = "Next Hunk" },

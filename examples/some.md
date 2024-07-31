@@ -8,11 +8,15 @@
 docker images
 ```
 
+programmming is wrongg
+
 ### remove one or more images (must not have any container before deleting)
 
 ```bash
 docker rmi some_image
 ```
+
+[Contexts: "[jump](#list-all-containers-file-sizes)"]
 
 ---
 

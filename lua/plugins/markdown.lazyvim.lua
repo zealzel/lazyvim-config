@@ -119,7 +119,7 @@ return {
       },
       heading = {
         sign = false,
-        position = "inline",
+        position = "overlay", -- inline | overlay
         width = "full", -- | block | full
         icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " },
 
