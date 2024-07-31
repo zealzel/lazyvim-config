@@ -160,4 +160,5 @@ return {
       treesitter = true,
     },
   },
+  "tribela/vim-transparent",
 }
