@@ -182,13 +182,16 @@ return {
       --  thin: when lines are empty overlay the above & below icons
       border = "thick",
       -- Used above code blocks for thin border
+      above = "▀",
+      below = "▄",
       -- above = "▄",
       -- below = "▀",
+      --
       -- above = "▄",
       -- below = "▄",
       -- Used below code blocks for thin border
-      above = "▀",
-      below = "▀",
+      -- above = "▀",
+      -- below = "▀",
       -- Highlight for code blocks & inline code
       highlight = "RenderMarkdownCode",
       highlight_inline = "RenderMarkdownCodeInline",

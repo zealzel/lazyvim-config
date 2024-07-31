@@ -19,6 +19,10 @@ opt.timeoutlen = 1000
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldlevel = 99
+vim.g.lazyvim_statuscolumn = {
+  folds_open = true, -- show fold sign when fold is open, default: false
+  folds_githl = false, -- highlight fold sign with git sign color, default: false
+}
 
 vim.o.shell = "zsh"
 
