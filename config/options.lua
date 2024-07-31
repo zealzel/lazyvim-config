@@ -11,17 +11,20 @@ opt.scrolloff = 0
 opt.modeline = false
 opt.timeoutlen = 1000
 
-opt.swapfile = false
-
 -- vim.g.mkdp_auto_start = 0
 -- vim.g.mkdp_auto_close = 0
 -- vim.g.mkdp_browser = "firefox"
+-- vim.g.maplocalleader = ","
 
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldlevel = 99
+vim.g.lazyvim_statuscolumn = {
+  folds_open = true, -- show fold sign when fold is open, default: false
+  folds_githl = false, -- highlight fold sign with git sign color, default: false
+}
 
-vim.o.shell = "bash"
+vim.o.shell = "zsh"
 
 -- set python lsp as basedpyright instead of pyright
 -- https://github.com/DetachHead/basedpyright
