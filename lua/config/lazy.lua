@@ -25,7 +25,7 @@ require("lazy").setup({
     -- { import = "lazyvim.plugins.extras.lang.markdown" }, -- lsp: marksman | format/lint: markdownlint-cli2,markdown-toc
     { import = "lazyvim.plugins.extras.lang.typescript" },
     ---- formatting
-    -- { import = "lazyvim.plugins.extras.formatting.prettier" },
+    { import = "lazyvim.plugins.extras.formatting.prettier" },
     ---- editor
     { import = "lazyvim.plugins.extras.editor.outline" },
     ---- coding

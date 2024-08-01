@@ -10,7 +10,7 @@
     - [list all containers](#list-all-containers)
     - [list all containers & file sizes](#list-all-containers--file-sizes)
   - [Delete](#delete)
-    - [remove one or more containers](#remove-one-or-more-containers)
+  - [remove one or more containers](#remove-one-or-more-containers)
   - [Run](#run)
     - [啟動一個 bash 終端，允許使用者進行互動](#%E5%95%9F%E5%8B%95%E4%B8%80%E5%80%8B-bash-%E7%B5%82%E7%AB%AF%E5%85%81%E8%A8%B1%E4%BD%BF%E7%94%A8%E8%80%85%E9%80%B2%E8%A1%8C%E4%BA%92%E5%8B%95)
     - [啟動一個 bash 終端，允許使用者進行互動, 且命名為 dochi](#%E5%95%9F%E5%8B%95%E4%B8%80%E5%80%8B-bash-%E7%B5%82%E7%AB%AF%E5%85%81%E8%A8%B1%E4%BD%BF%E7%94%A8%E8%80%85%E9%80%B2%E8%A1%8C%E4%BA%92%E5%8B%95-%E4%B8%94%E5%91%BD%E5%90%8D%E7%82%BA-dochi)
