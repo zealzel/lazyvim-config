@@ -1,3 +1,41 @@
+<!-- toc -->
+
+- [Image](#image)
+  - [list all images](#list-all-images)
+  - [remove one or more images (must not have any container before deleting)](#remove-one-or-more-images-must-not-have-any-container-before-deleting)
+  - [create image from container](#create-image-from-container)
+- [Container](#container)
+  - [List](#list)
+    - [list all running containers](#list-all-running-containers)
+    - [list all containers](#list-all-containers)
+    - [list all containers & file sizes](#list-all-containers--file-sizes)
+  - [Delete](#delete)
+    - [remove one or more containers](#remove-one-or-more-containers)
+  - [Run](#run)
+    - [啟動一個 bash 終端，允許使用者進行互動](#%E5%95%9F%E5%8B%95%E4%B8%80%E5%80%8B-bash-%E7%B5%82%E7%AB%AF%E5%85%81%E8%A8%B1%E4%BD%BF%E7%94%A8%E8%80%85%E9%80%B2%E8%A1%8C%E4%BA%92%E5%8B%95)
+    - [啟動一個 bash 終端，允許使用者進行互動, 且命名為 dochi](#%E5%95%9F%E5%8B%95%E4%B8%80%E5%80%8B-bash-%E7%B5%82%E7%AB%AF%E5%85%81%E8%A8%B1%E4%BD%BF%E7%94%A8%E8%80%85%E9%80%B2%E8%A1%8C%E4%BA%92%E5%8B%95-%E4%B8%94%E5%91%BD%E5%90%8D%E7%82%BA-dochi)
+    - [啟動一個 bash 終端，允許使用者進行互動，退出時關閉容器](#%E5%95%9F%E5%8B%95%E4%B8%80%E5%80%8B-bash-%E7%B5%82%E7%AB%AF%E5%85%81%E8%A8%B1%E4%BD%BF%E7%94%A8%E8%80%85%E9%80%B2%E8%A1%8C%E4%BA%92%E5%8B%95%E9%80%80%E5%87%BA%E6%99%82%E9%97%9C%E9%96%89%E5%AE%B9%E5%99%A8)
+    - [run container with docker volume](#run-container-with-docker-volume)
+    - [Image的Dockerfile若有CMD指令，啟動container後，若想進bash，需下指令](#image%E7%9A%84dockerfile%E8%8B%A5%E6%9C%89cmd%E6%8C%87%E4%BB%A4%E5%95%9F%E5%8B%95container%E5%BE%8C%E8%8B%A5%E6%83%B3%E9%80%B2bash%E9%9C%80%E4%B8%8B%E6%8C%87%E4%BB%A4)
+    - [stop container](#stop-container)
+    - [delete container](#delete-container)
+  - [copy](#copy)
+    - [在host跟容器間複製檔案](#%E5%9C%A8host%E8%B7%9F%E5%AE%B9%E5%99%A8%E9%96%93%E8%A4%87%E8%A3%BD%E6%AA%94%E6%A1%88)
+  - [Inspect Show docker disk usage](#inspect-show-docker-disk-usage)
+    - [Show docker disk usage with more detailed view](#show-docker-disk-usage-with-more-detailed-view)
+  - [rename](#rename)
+  - [docker hub](#docker-hub)
+    - [Push to Docker Hub](#push-to-docker-hub)
+  - [tricks](#tricks)
+    - [always start the container after the computer is restarted](#always-start-the-container-after-the-computer-is-restarted)
+- [docker-compose](#docker-compose)
+  - [Build](#build)
+    - [Only rebuild one service without cache when using docker-compose-1.yml up](#only-rebuild-one-service-without-cache-when-using-docker-compose-1yml-up)
+    - [Only rebuild one service without cache when using docker-compos-2.ymle up](#only-rebuild-one-service-without-cache-when-using-docker-compos-2ymle-up)
+    - [up](#up)
+
+<!-- tocstop -->
+
 #
 
 ## Image
@@ -46,8 +84,6 @@ if __name__ == "__main__":
     print("Hello World")
 ````
 
-````
-
 ## Container
 
 ### List
@@ -60,7 +96,7 @@ docker ps
 
 ```bash
 docker ps -a
-````
+```
 
 #### list all containers & file sizes
 
