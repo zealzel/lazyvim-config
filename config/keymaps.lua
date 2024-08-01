@@ -43,6 +43,8 @@ map("n", "<leader>cl", "<cmd>LspInfo<cr>", { desc = "Lsp Info" })
 
 map("n", "<leader>cN", "<cmd>ConformInfo<cr>", { desc = "Conform Info" })
 
+map("n", "<leader>LE", "<cmd>LazyExtras<cr>", { desc = "Conform Info" })
+
 -- whichkeys
 local wk = require("which-key")
 local mappings = {
