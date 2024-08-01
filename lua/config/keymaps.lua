@@ -44,6 +44,14 @@ map("n", "<leader>cN", "<cmd>ConformInfo<cr>", { desc = "Conform Info" })
 
 map("n", "<leader>LE", "<cmd>LazyExtras<cr>", { desc = "Conform Info" })
 
+map(
+  "n",
+  "<leader>fh",
+  "<cmd>lua require'telescope.builtin'.find_files({hidden=true, no_ignore=true})<cr>",
+  -- "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>",
+  { desc = "Find Files (including hidden)" }
+)
+
 -- whichkeys
 local wk = require("which-key")
 local mappings = {
