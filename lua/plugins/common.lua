@@ -114,9 +114,9 @@ return {
     -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
   },
   "sindrets/diffview.nvim",
-  -- "tribela/vim-transparent",
   {
     -- https://github.com/xiyaowong/transparent.nvim
+    -- use :TransparentToggle to toggle transparency
     "xiyaowong/transparent.nvim",
     opts = {
       exclude_groups = { "CursorLine" },
