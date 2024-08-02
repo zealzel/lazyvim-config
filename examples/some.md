@@ -67,7 +67,7 @@ docker commit some_container some_image
 - Programming languages
   1. [ ] python
   2. [ ] C++
-  3. [x] javascript
+  3. [x] javascript color: #000000|#ff0000|#00ff00|#0000ff|#ffffff
 
 Some of these words _are emphasized_.
 
