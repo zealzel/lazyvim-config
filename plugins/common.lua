@@ -137,4 +137,5 @@ return {
     },
   },
   "tribela/vim-transparent",
+  { "brenoprata10/nvim-highlight-colors", config = true },
 }
