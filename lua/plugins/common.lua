@@ -119,7 +119,7 @@ return {
     -- https://github.com/xiyaowong/transparent.nvim
     "xiyaowong/transparent.nvim",
     opts = {
-      -- exclude_groups = { "CursorLine" },
+      exclude_groups = { "CursorLine" },
     },
   },
   { "brenoprata10/nvim-highlight-colors", config = true },
