@@ -141,6 +141,7 @@ return {
         vim.cmd(string.format([[highlight Headline4Fg cterm=bold gui=bold guifg=%s]], color4_bg)),
         vim.cmd(string.format([[highlight Headline5Fg cterm=bold gui=bold guifg=%s]], color5_bg)),
         vim.cmd(string.format([[highlight Headline6Fg cterm=bold gui=bold guifg=%s]], color6_bg)),
+        vim.api.nvim_set_hl(0, "RenderMarkdownCode", { fg = "NONE", bg = "#202020" }),
 
         backgrounds = {
           "Headline1Bg",
