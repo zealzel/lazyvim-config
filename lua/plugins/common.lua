@@ -120,6 +120,7 @@ return {
     "xiyaowong/transparent.nvim",
     opts = {
       exclude_groups = { "CursorLine" },
+      -- extra_groups = { "RenderMarkdownCode" },
     },
   },
   { "brenoprata10/nvim-highlight-colors", config = true },
