@@ -18,9 +18,14 @@ return {
             icons = {
               code_block = {
                 conceal = true,
-                width = "content",
+                width = "content", -- content or fullwidth
                 content_only = true,
                 min_width = 85,
+                highlight = "RenderMarkdownCode",
+                padding = {
+                  left = 0,
+                  right = 0,
+                },
               },
               -- ordered = {
               --     icons = { "item 1.", "[0]", "A.", "a.", "§ 1)", "I.", "i.", "⒈", "⑴", "Ⓐ", "ⓐ" },
