@@ -70,6 +70,7 @@ return {
           ["[c"] = { query = "@class.outer", desc = "Prev class start" },
           ["[i"] = { query = "@conditional.outer", desc = "Prev conditional start" },
           ["[l"] = { query = "@loop.outer", desc = "Prev loop start" },
+          ["[z"] = { query = "@fold", query_group = "folds", desc = "Prev fold" },
         },
         goto_previous_end = {
           ["[A"] = "@parameter.inner",
