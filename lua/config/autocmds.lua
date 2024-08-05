@@ -12,3 +12,11 @@ vim.api.nvim_set_hl(0, "LspInfoBorder", { fg = "#d5c4a1", bg = "NONE" })
 
 -- # fix foldopen icon is not shown correctly. originally set to italic = true which causes the issue
 vim.api.nvim_set_hl(0, "Folded", { fg = "#928374", bg = "#3c3836", italic = false })
+
+-- vim.api.nvim_create_user_command("Upper", function(opts)
+--   print(string.upper(opts.args))
+-- end, { nargs = 1 })
+--
+-- vim.api.nvim_create_user_command("WTF", function()
+--   print("WTF")
+-- end, {})

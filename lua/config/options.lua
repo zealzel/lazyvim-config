@@ -30,3 +30,13 @@ vim.o.shell = "zsh"
 -- https://github.com/DetachHead/basedpyright
 -- ref: https://github.com/LazyVim/LazyVim/discussions/3350
 vim.g.lazyvim_python_lsp = "basedpyright"
+
+-- vim.g.python3_host_prog = "/Users/zealzel/.pyenv/versions/3.9.11/bin/python3"
+vim.g.python3_host_prog = "/Users/zealzel/.pyenv/versions/3.10.8/bin/python3"
+-- vim.g.python3_host_prog = "/Users/zealzel/.pyenv/versions/3.11.6/bin/python3"
+-- vim.g.python3_host_prog = "/Users/zealzel/.pyenv/versions/3.12.0/bin/python3"
+-- vim.g.python3_host_prog = "/usr/local/bin/python3"
+
+-- vim.opt.clipboard:append("unnamedplus")
+-- vim.opt.clipboard:append("unnamedplus")
+vim.opt.clipboard = "unnamed,unnamedplus"
