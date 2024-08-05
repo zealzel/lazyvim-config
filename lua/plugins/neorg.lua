@@ -1,9 +1,14 @@
 return {
   "nvim-neorg/neorg",
-  dependencies = { "luarocks.nvim" },
+  dependencies = {
+    "luarocks.nvim",
+    { "nvim-lua/plenary.nvim" },
+    { "nvim-neorg/neorg-telescope" },
+  },
   lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
   version = "*", -- Pin Neorg to the latest stable release
   config = function()
+    vim.keymap.set( "n", "\\f", "<Plug>(neorg.telescope.insert_file_link)", { desc = "Insert file link" })
     require("neorg").setup({
       configure_parsers = true,
       install_parsers = true,
@@ -74,6 +79,15 @@ return {
         ["core.presenter"] = {
           config = {
             zen_mode = "zen-mode",
+          },
+        },
+        ["core.integrations.telescope"] = {
+          config = {
+            insert_file_link = {
+              -- Whether to show the title preview in telescope. Affects performance with a large
+              -- number of files.
+              show_title_preview = false,
+            },
           },
         },
       },
