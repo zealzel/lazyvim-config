@@ -205,7 +205,7 @@ return {
           print(table.concat(linters, ", "))
         end
       end, {})
-      vim.keymap.set("n", "<leader>ll", "<cmd>ListLinters<cr>", { desc = "List linters attached to this buffer" })
+      -- vim.keymap.set("n", "<leader>ll", "<cmd>ListLinters<cr>", { desc = "List linters attached to this buffer" })
     end,
   },
   -- {

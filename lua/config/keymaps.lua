@@ -40,9 +40,9 @@ map("n", "<leader>F", ":DiffviewFileHistory %<CR>", { desc = "DiffviewFileHistor
 
 -- add thie mapping again even it exists in layzvim
 map("n", "<leader>cl", "<cmd>LspInfo<cr>", { desc = "Lsp Info" })
+map("n", "<leader>cE", "<cmd>LazyExtras<cr>", { desc = "LazyExtras" })
 map("n", "<leader>cN", "<cmd>ConformInfo<cr>", { desc = "Conform Info" })
-
-map("n", "<leader>LE", "<cmd>LazyExtras<cr>", { desc = "Conform Info" })
+map("n", "<leader>cL", "<cmd>ListLinters<cr>", { desc = "List linters attached to this buffer" })
 
 map(
   "n",
