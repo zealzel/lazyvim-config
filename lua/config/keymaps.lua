@@ -44,6 +44,8 @@ map("n", "<leader>cE", "<cmd>LazyExtras<cr>", { desc = "LazyExtras" })
 map("n", "<leader>cN", "<cmd>ConformInfo<cr>", { desc = "Conform Info" })
 map("n", "<leader>cL", "<cmd>ListLinters<cr>", { desc = "List linters attached to this buffer" })
 
+map("n", "<leader>bF", ":!open $(realpath $(dirname %))<cr>", { desc = "Open in Finder", silent = true })
+
 map(
   "n",
   "<leader>fh",
