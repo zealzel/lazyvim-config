@@ -108,13 +108,13 @@ return {
       -- vim.g.mkdp_browserfunc = "OpenMarkdownPreview"
       --
       -- execute "chromium --new-window --app=" . a:url
-      vim.cmd([[
-        function OpenMarkdownPreview (url)
-            let cmd = "open -a Google\ Chrome --new" . shellescape(a:url) . " &"
-            call system(cmd)
-        endfunction
-      ]])
-      vim.g.mkdp_browserfunc = "OpenMarkdownPreview"
+      -- vim.cmd([[
+      --   function OpenMarkdownPreview (url)
+      --       let cmd = "open -a Google\ Chrome --new" . shellescape(a:url) . " &"
+      --       call system(cmd)
+      --   endfunction
+      -- ]])
+      -- vim.g.mkdp_browserfunc = "OpenMarkdownPreview"
     end,
     keys = {
       {
