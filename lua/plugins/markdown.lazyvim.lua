@@ -65,10 +65,11 @@ return {
   },
   {
     "mfussenegger/nvim-lint",
-    optional = true,
     opts = {
       linters_by_ft = {
-        markdown = { "markdownlint-cli2" },
+        markdown = { "markdownlint-cli2", "vale" },
+        -- markdown = { "markdownlint-cli2", "markdown-toc" },
+        -- markdown = { "vale", "write-good" },
       },
     },
   },
