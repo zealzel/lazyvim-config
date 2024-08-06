@@ -1,7 +1,3 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
-
 local map = vim.keymap.set
 local unmap = vim.keymap.del
 
@@ -9,34 +5,15 @@ unmap("n", "<S-h>", { desc = "Previous buffer" })
 unmap("n", "<S-l>", { desc = "Next buffer" })
 map("n", "<tab>", ":bnext<cr>", { desc = "Next buffer", silent = true })
 map("n", "<s-tab>", ":bprevious<cr>", { desc = "Previous buffer", silent = true })
--- map("n", "<leader>c", "<leader>bd", { desc = "Delete Buffer", remap = true, silent = true })
 
 map("n", "<C-q>", ":q<cr>", { desc = "quit current window", silent = true })
 map("v", "p", 'P:let @"=@0<CR>', { desc = "paste", remap = true, silent = true })
 
 map("n", "Z", "za", { desc = "toggle fold" })
-
--- map("n", "<C-g>", ":vertical :Git <CR>", { desc = "fugitive Git", silent = true })
 map("n", "<C-g>", ":Neogit <CR>", { desc = "Neogit status", silent = true })
-
 map("n", "<C-n>", ":Neotree toggle<cr>", { desc = "Neotree toggle", silent = true })
 
 -- unmap("n", "<C-/>", { desc = "Lazyterm" })
--- map("n", "<C-\\>", ":ToggleTerm<cr>", { desc = "toggleterm", silent = true })
-map("n", "<C-t>", ":ToggleTerm<cr>", { desc = "toggleterm", silent = true })
-map("n", "<leader>ts", ":ToggleTermSendCurrentLine<cr>", { desc = "ToggleTermSendCurrentLine" })
-map("v", "<leader>ts", ":ToggleTermSendVisualLines<cr>", { desc = ":ToggleTermSendVisualLines<cr>" })
--- map("v", "<leader>ts", ":ToggleTermSendVisualSelection<cr>", { desc = ":ToggleTermSendVisualSelection<cr>" })
-
-map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
--- press ctrl+c to exit oil mode
-
-map("n", "<leader>D", ":DiffviewOpen <CR>", { desc = "DiffviewOpen" })
-map("n", "<leader>C", "<cmd>set hidden<cr><cmd>DiffviewClose<cr><cmd>set nohidden<cr>", { desc = "DiffviewClose" })
-
--- map("n", "<leader>F", ":DiffviewFileHistory <CR>", { desc = "DiffviewFileHistory" }) -- <tab> next commit, <s-tab> previous commit
--- conflict-with-noice issue: fixed keymaps as below. Ref:https://github.com/sindrets/diffview.nvim/issues/302
-map("n", "<leader>F", ":DiffviewFileHistory %<CR>", { desc = "DiffviewFileHistory" }) -- <tab> next commit, <s-tab> previous commit
 
 -- add thie mapping again even it exists in layzvim
 map("n", "<leader>cl", "<cmd>LspInfo<cr>", { desc = "Lsp Info" })
@@ -57,12 +34,6 @@ map(
 -- whichkeys
 local wk = require("which-key")
 local mappings = {
-  -- Fugitive
-  -- { "<leader>gl", ":Git blame<cr>", desc = "Blame" },
-  -- { "<leader>gca", ":Git commit --amend<cr>", desc = "Commit amend" },
-  -- { "<leader>gP", ":Git push<cr>", desc = "Push" },
-  -- { "<leader>gp", ":Git pull<cr>", desc = "pull" },
-  --
   { "<leader>gr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", desc = "Reset Hunk" },
   { "<leader>gj", "<cmd>lua require 'gitsigns'.next_hunk()<cr>", desc = "Next Hunk" },
   { "<leader>gk", "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", desc = "Prev Hunk" },
