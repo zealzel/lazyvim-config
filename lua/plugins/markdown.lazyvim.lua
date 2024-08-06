@@ -11,6 +11,7 @@ LazyVim.on_very_lazy(function()
     extension = { mdx = "markdown.mdx" },
   })
 end)
+
 return {
   recommended = function()
     return LazyVim.extras.wants({
@@ -81,11 +82,9 @@ return {
       },
     },
   },
-
-  -- Markdown preview
-  {
+  { -- Markdown preview
     "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    -- cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
     -- build = function()
     --   vim.fn["mkdp#util#install"]()
@@ -93,28 +92,6 @@ return {
     build = "cd app && yarn install",
     init = function()
       vim.g.mkdp_filetypes = { "markdown" }
-      -- myPreview = function()
-      --   -- execute "silent ! open -a Firefox -n --args --new-window " . a:url using lua & vim api
-      --   vim.api.nvim_command("silent ! open -a Firefox -n --args --new-window " .. vim.fn.expand("%:p"))
-      -- end
-      -- vim.g.mkdp_browserfunc = "myPreview"
-      --
-      -- vim.cmd([[
-      --    function OpenMarkdownPreview (url)
-      --       let cmd = "open -a Google\ Chrome --new --args --new-window" . shellescape(a:url) . " &"
-      --       call system(cmd)
-      --    endfunction
-      -- ]])
-      -- vim.g.mkdp_browserfunc = "OpenMarkdownPreview"
-      --
-      -- execute "chromium --new-window --app=" . a:url
-      -- vim.cmd([[
-      --   function OpenMarkdownPreview (url)
-      --       let cmd = "open -a Google\ Chrome --new" . shellescape(a:url) . " &"
-      --       call system(cmd)
-      --   endfunction
-      -- ]])
-      -- vim.g.mkdp_browserfunc = "OpenMarkdownPreview"
     end,
     keys = {
       {
@@ -126,12 +103,12 @@ return {
     },
     config = function()
       vim.cmd([[do FileType]])
-
-      -- function OpenMarkdownPreview (url)
-      --     execute "silent ! open -a Firefox -n --args --new-window " . a:url
-      --   endfunction
-
-      --   let g:mkdp_browserfunc = 'OpenMarkdownPreview'
+      vim.cmd([[
+        function OpenMarkdownPreview (url)
+            execute "silent ! open -a 'Google Chrome' -n --args --new-window " . a:url
+        endfunction
+      ]])
+      vim.g.mkdp_browserfunc = "OpenMarkdownPreview"
     end,
   },
 
