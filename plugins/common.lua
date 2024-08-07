@@ -95,34 +95,6 @@ return {
   },
   { "akinsho/toggleterm.nvim", version = "*", config = true },
   {
-    "stevearc/oil.nvim",
-    config = function()
-      require("oil").setup({})
-    end,
-    opts = {},
-    dependencies = { { "echasnovski/mini.icons", opts = {} } },
-    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
-  },
-  {
-    "stevearc/oil.nvim",
-    config = function()
-      require("oil").setup({})
-    end,
-    opts = {},
-    dependencies = { { "echasnovski/mini.icons", opts = {} } },
-    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
-  },
-  "sindrets/diffview.nvim",
-  {
-    "stevearc/oil.nvim",
-    config = function()
-      require("oil").setup({})
-    end,
-    opts = {},
-    dependencies = { { "echasnovski/mini.icons", opts = {} } },
-    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
-  },
-  {
     "ErickKramer/nvim-ros2",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -145,31 +117,4 @@ return {
     },
   },
   { "brenoprata10/nvim-highlight-colors", config = true },
-  {
-    "b0o/incline.nvim",
-    config = true,
-    opts = {
-      window = {
-        padding = 0,
-        margin = { horizontal = 0 },
-      },
-      render = function(props)
-        local helpers = require("incline.helpers")
-        local devicons = require("nvim-web-devicons")
-        local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
-        if filename == "" then
-          filename = "[No Name]"
-        end
-        local ft_icon, ft_color = devicons.get_icon_color(filename)
-        local modified = vim.bo[props.buf].modified
-        return {
-          ft_icon and { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or "",
-          " ",
-          { filename, gui = modified and "bold,italic" or "bold" },
-          " ",
-          guibg = "#44406e",
-        }
-      end,
-    },
-  },
 }
