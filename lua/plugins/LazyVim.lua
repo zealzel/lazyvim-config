@@ -6,7 +6,12 @@ return {
   -- },
   opts = {
     colorscheme = "gruvbox",
-    vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" }), -- line to fix de background color border
+    -- vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" }), -- line to fix de background color border
+    -- set border color
+    -- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization
+    -- https://gist.github.com/romainl/379904f91fa40533175dfaec4c833f2f
+    vim.cmd([[autocmd! ColorScheme * highlight FloatBorder guibg=none]]),
+    -- vim.cmd([[autocmd! ColorScheme * highlight NormalFloat guibg=#41213f]]),
   },
   -- opts = {
   --   colorscheme = "catppuccin-macchiato", -- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
