@@ -6,6 +6,7 @@ return {
   -- },
   opts = {
     colorscheme = "gruvbox",
+    vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" }), -- line to fix de background color border
   },
   -- opts = {
   --   colorscheme = "catppuccin-macchiato", -- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
