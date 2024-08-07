@@ -30,21 +30,6 @@ return {
     },
   },
   {
-    "hrsh7th/nvim-cmp",
-    opts = {
-      window = {
-        completion = {
-          border = "rounded",
-          winhighlight = "Normal:CmpDocNormal",
-        },
-        documentation = {
-          border = "rounded",
-          winhighlight = "Normal:CmpDocNormal",
-        },
-      },
-    },
-  },
-  {
     "folke/which-key.nvim",
     opts = {
       win = {
@@ -116,4 +101,10 @@ return {
   --     })
   --   end,
   -- },
+  {
+    "supermaven-inc/supermaven-nvim",
+    config = function()
+      require("supermaven-nvim").setup({})
+    end,
+  },
 }

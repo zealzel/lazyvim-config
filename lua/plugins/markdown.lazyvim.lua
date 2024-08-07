@@ -68,7 +68,8 @@ return {
     "mfussenegger/nvim-lint",
     opts = {
       linters_by_ft = {
-        markdown = { "markdownlint-cli2", "vale" },
+        markdown = { "markdownlint-cli2" },
+        -- markdown = { "markdownlint-cli2", "vale" },
         -- markdown = { "markdownlint-cli2", "markdown-toc" },
         -- markdown = { "vale", "write-good" },
       },

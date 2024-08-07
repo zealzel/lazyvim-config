@@ -20,3 +20,10 @@ def somefunc():
 
 if __name__ == "__main__":
     print("SDF")
+
+    # give me a simple game
+    game = Someclass()
+    game.demo()
+
+    # give me a simple game
+    somefunc()
