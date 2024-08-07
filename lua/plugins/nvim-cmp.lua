@@ -8,6 +8,8 @@ return {
     opts.window = {
       completion = { border = "rounded", winhighlight = "Normal:CmpDocNormal" },
       documentation = { border = "rounded", winhighlight = "Normal:CmpDocNormal" },
+      -- completion = { border = "rounded" },
+      -- documentation = { border = "rounded" },
     }
     opts.sources = vim.list_extend(opts.sources or {}, {
       { name = "buffer" },

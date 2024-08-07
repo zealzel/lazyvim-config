@@ -4,11 +4,11 @@
 
 local opt = vim.opt
 
--- vim.cmd([[autocmd! ColorScheme * highlight CmpNormal guibg=#727272]])
-vim.cmd([[autocmd! ColorScheme * highlight CmpDocNormal guifg=#ffffff guibg=#212121]])
+-- vim.cmd([[autocmd! ColorScheme * highlight CmpNormal guibg=#ff0000]])
+-- vim.cmd([[autocmd! ColorScheme * highlight CmpDocNormal guifg=#ffffff guibg=#00ff00]])
 
--- vim.api.nvim_set_hl(0, "CmpNormal", { bg = "NONE" })
--- vim.api.nvim_set_hl(0, "CmpDocNormal", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "CmpNormal", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "CmpDocNormal", { bg = "NONE" })
 
 vim.api.nvim_set_hl(0, "LspInfoBorder", { fg = "#d5c4a1", bg = "NONE" })
 
