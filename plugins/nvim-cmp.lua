@@ -3,6 +3,10 @@ return {
   dependencies = {
     "onsails/lspkind.nvim",
   },
+  keys = { -- In order to let Supermaven's Tab to work. See https://github.com/supermaven-inc/supermaven-nvim/issues/10
+    { "<tab>", false, mode = { "i", "s" } },
+    { "<s-tab>", false, mode = { "i", "s" } },
+  },
   opts = function(_, opts)
     local lspkind = require("lspkind")
     opts.window = {

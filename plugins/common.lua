@@ -117,4 +117,10 @@ return {
     },
   },
   { "brenoprata10/nvim-highlight-colors", config = true },
+  {
+    "supermaven-inc/supermaven-nvim",
+    config = function()
+      require("supermaven-nvim").setup({})
+    end,
+  },
 }
