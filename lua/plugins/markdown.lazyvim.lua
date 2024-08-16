@@ -93,6 +93,8 @@ return {
     build = "cd app && yarn install",
     init = function()
       vim.g.mkdp_filetypes = { "markdown" }
+      vim.g.mkdp_markdown_css = "/Users/zealzel/.dotfiles/lazyvim-config/markdown_iamcco.css"
+      -- vim.g.mkdp_markdown_css = "~/.dotfiles/lazyvim-config/markdown_iamcco.css"
     end,
     keys = {
       {
