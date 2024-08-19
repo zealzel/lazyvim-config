@@ -17,6 +17,10 @@ return {
 
     -- see below for full list of optional dependencies 👇
   },
+  vim.keymap.set("n", "\\oo", ":ObsidianOpen<CR>", { desc = "Open obsidian" }),
+  vim.keymap.set("n", "\\on", ":ObsidianNew<CR>", { desc = "New note" }),
+  vim.keymap.set("n", "\\oN", ":ObsidianNewFromTemplate<CR>", { desc = "New from template" }),
+  vim.keymap.set("n", "\\ot", ":ObsidianTemplate<CR>", { desc = "Templates" }),
   opts = {
     workspaces = {
       {
@@ -27,6 +31,11 @@ return {
         name = "work",
         path = "~/vaults/work",
       },
+    },
+    templates = {
+      folder = "templates",
+      date_format = "%Y-%m-%d-%a",
+      time_format = "%H:%M",
     },
 
     -- see below for full list of options 👇

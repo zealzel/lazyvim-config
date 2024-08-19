@@ -51,3 +51,5 @@ vim.g.python3_host_prog = "/Users/zealzel/.pyenv/versions/3.10.8/bin/python3"
 -- vim.opt.clipboard:append("unnamedplus")
 -- vim.opt.clipboard:append("unnamedplus")
 vim.opt.clipboard = "unnamed,unnamedplus"
+
+vim.opt.conceallevel = 2
