@@ -37,7 +37,8 @@ return {
       date_format = "%Y-%m-%d-%a",
       time_format = "%H:%M",
     },
-
-    -- see below for full list of options 👇
+    ui = {
+      enable = false, -- Use ui provided by markdown.nvim instead
+    },
   },
 }
