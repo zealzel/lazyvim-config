@@ -64,9 +64,46 @@ docker rmi some_image
 docker commit some_container some_image
 ```
 
+- item 1
+- item 2
+  - item 2
+    - item 2
+  - item 2
+  - item 2
+- item 3
+  - item 3
+  - item 3
+- item 4
+
+1. asdf
+   - sdf
+   - sdf
+     - sdf
+   - sdf
+2. asdf
+3. asdf
+4. asdf
+
+[!TIP]
+asdf
+
+> [!TODO]
+
+[!NOTE]
+
+[!WARNING]
+[!DANGER]
+
+[!EXAMPLE]
+[!QUOTE]
+
+> [!BUG]
+
+[!SUCCESS]
+
 - Programming languages
-  1. [ ] python
-  2. [ ] C++
+  1. [x] python
+  2. [x] C++
   3. [x] javascript color: #000000|#ff0000|#00ff00|#0000ff|#ffffff
 
 Some of these words _are emphasized_.
@@ -74,15 +111,13 @@ Some of these words _are emphasized_.
 > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
 > consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
 
-````python
-
 ```python
 import os
 import sys
 
 if __name__ == "__main__":
     print("Hello World")
-````
+```
 
 ## Container
 

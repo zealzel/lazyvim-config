@@ -146,17 +146,94 @@ return {
     enabled = true,
     opts = {
       file_types = { "markdown", "norg", "rmd", "org", "Avante" },
+      sign = {
+        -- Turn on / off sign rendering
+        enabled = true,
+        -- Applies to background of sign text
+        highlight = "RenderMarkdownSign",
+      },
       code = {
-        sign = false,
-        right_pad = 1,
+        -- Turn on / off code block & inline code rendering
+        enabled = true,
+        -- Turn on / off any sign column related rendering
+        sign = true,
+        -- Determines how code blocks & inline code are rendered:
+        --  none: disables all rendering
+        --  normal: adds highlight group to code blocks & inline code, adds padding to code blocks
+        --  language: adds language icon to sign column if enabled and icon + name above code blocks
+        --  full: normal + language
+        style = "full",
+        -- Amount of padding to add to the left of code blocks
+        left_pad = 0,
+        -- Amount of padding to add to the right of code blocks when width is 'block'
+        right_pad = 0,
+        -- Width of the code block background:
+        --  block: width of the code block
+        --  full: full width of the window
+        width = "full",
+        -- Determins how the top / bottom of code block are rendered:
+        --  thick: use the same highlight as the code body
+        --  thin: when lines are empty overlay the above & below icons
+        border = "thick",
+        -- Used above code blocks for thin border
+        above = "▀",
+        below = "▄",
+        -- above = "▄",
+        -- below = "▀",
+        --
+        -- above = "▄",
+        -- below = "▄",
+        -- Used below code blocks for thin border
+        -- above = "▀",
+        -- below = "▀",
+        -- Highlight for code blocks & inline code
+        highlight = "RenderMarkdownCode",
+        highlight_inline = "RenderMarkdownCodeInline",
       },
       anti_conceal = {
         -- This enables hiding any added text on the line the cursor is on
         -- This does have a performance penalty as we must listen to the 'CursorMoved' event
         enabled = false,
       },
+      pipe_table = {
+        -- Turn on / off pipe table rendering
+        enabled = true,
+        -- Pre configured settings largely for setting table border easier
+        --  heavy:  use thicker border characters
+        --  double: use double line border characters
+        --  round:  use round border corners
+        --  none:   does nothing
+        preset = "normal",
+        -- Determines how the table as a whole is rendered:
+        --  none:   disables all rendering
+        --  normal: applies the 'cell' style rendering to each row of the table
+        --  full:   normal + a top & bottom line that fill out the table when lengths match
+        style = "full",
+        -- Determines how individual cells of a table are rendered:
+        --  overlay: writes completely over the table, removing conceal behavior and highlights
+        --  raw:     replaces only the '|' characters in each row, leaving the cells unmodified
+        --  padded:  raw + cells are padded with inline extmarks to make up for any concealed text
+        cell = "padded",
+        -- Gets placed in delimiter row for each column, position is based on alignmnet
+        alignment_indicator = "━",
+        -- Characters used to replace table border
+        -- Correspond to top(3), delimiter(3), bottom(3), vertical, & horizontal
+        -- stylua: ignore
+        border = {
+            '┌', '┬', '┐',
+            '├', '┼', '┤',
+            '└', '┴', '┘',
+            '│', '─',
+        },
+        -- Highlight for table heading, delimiter, and the line above
+        head = "RenderMarkdownTableHead",
+        -- Highlight for everything else, main table rows and the line below
+        row = "RenderMarkdownTableRow",
+        -- Highlight for inline padding used to add back concealed space
+        filler = "RenderMarkdownTableFill",
+      },
       heading = {
-        sign = false,
+        sign = true,
         position = "overlay", -- inline | overlay
         width = "full", -- | block | full
         icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " },
@@ -197,44 +274,6 @@ return {
           "Headline6Fg",
         },
       },
-    },
-    code = {
-      -- Turn on / off code block & inline code rendering
-      enabled = true,
-      -- Turn on / off any sign column related rendering
-      sign = true,
-      -- Determines how code blocks & inline code are rendered:
-      --  none: disables all rendering
-      --  normal: adds highlight group to code blocks & inline code, adds padding to code blocks
-      --  language: adds language icon to sign column if enabled and icon + name above code blocks
-      --  full: normal + language
-      style = "full",
-      -- Amount of padding to add to the left of code blocks
-      left_pad = 0,
-      -- Amount of padding to add to the right of code blocks when width is 'block'
-      right_pad = 0,
-      -- Width of the code block background:
-      --  block: width of the code block
-      --  full: full width of the window
-      width = "full",
-      -- Determins how the top / bottom of code block are rendered:
-      --  thick: use the same highlight as the code body
-      --  thin: when lines are empty overlay the above & below icons
-      border = "thick",
-      -- Used above code blocks for thin border
-      above = "▀",
-      below = "▄",
-      -- above = "▄",
-      -- below = "▀",
-      --
-      -- above = "▄",
-      -- below = "▄",
-      -- Used below code blocks for thin border
-      -- above = "▀",
-      -- below = "▀",
-      -- Highlight for code blocks & inline code
-      highlight = "RenderMarkdownCode",
-      highlight_inline = "RenderMarkdownCodeInline",
     },
     -- ft = { "markdown", "norg", "rmd", "org" },
     ft = { "markdown", "Avante", "norg" },
