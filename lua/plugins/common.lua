@@ -1,6 +1,12 @@
 return {
   -- "tpope/vim-fugitive",
   {
+    "nvim-telescope/telescope.nvim",
+    config = function()
+      require("telescope").load_extension("bookmarks")
+    end,
+  },
+  {
     "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim", -- required
@@ -106,5 +112,23 @@ return {
     config = function()
       require("supermaven-nvim").setup({})
     end,
+  },
+  {
+    "dhruvmanila/browser-bookmarks.nvim",
+    version = "*",
+    -- Only required to override the default options
+    opts = {
+      -- Override default configuration values
+      selected_browser = "chrome",
+    },
+    -- usage :Telescope bookmarks
+    -- Multiple bookmarks can be opened at the same time using multi selections feature in Telescope.
+    dependencies = {
+      -- Only if your selected browser is Firefox, Waterfox or buku
+      -- "kkharji/sqlite.lua",
+
+      -- Only if you're using the Telescope extension
+      "nvim-telescope/telescope.nvim",
+    },
   },
 }
