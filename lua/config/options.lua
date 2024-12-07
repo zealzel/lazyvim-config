@@ -52,3 +52,10 @@ vim.opt.clipboard = "unnamed,unnamedplus"
 vim.opt.conceallevel = 2
 
 opt.laststatus = 3
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "dbout",
+  callback = function()
+    vim.wo.foldenable = false
+  end,
+})
