@@ -121,6 +121,7 @@ return {
       -- Override default configuration values
       selected_browser = "chrome",
     },
+    keys = { { "<leader>fB", "<cmd>Telescope bookmarks<cr>", desc = "Open browser bookmarks" } },
     -- usage :Telescope bookmarks
     -- Multiple bookmarks can be opened at the same time using multi selections feature in Telescope.
     dependencies = {
