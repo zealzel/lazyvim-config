@@ -59,3 +59,84 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.wo.foldenable = false
   end,
 })
+
+-- vim.api.nvim_set_keymap(
+--   "v",
+--   "<leader>O",
+--   [[:'<,'>w !xargs -n 1 -I {} open -a "Google Chrome" {}<CR>]],
+--   { noremap = true, silent = true }
+-- )
+
+-- vim.api.nvim_set_keymap(
+--   "v",
+--   "<leader>o",
+--   [[:'<,'>w !open -na "Google Chrome" --args --new-window $(cat)<CR>]],
+--   { noremap = true, silent = true }
+-- )
+
+-- select multiple lines of urls, and open using google chrome. provide by chatgpt
+-- ex: url followed by a description enclosed in square brackets
+-- https://www.google.com [google site]
+-- https://abc.com.tw [this is a dummy site]
+
+vim.api.nvim_set_keymap(
+  "v",
+  "<leader>O",
+  [[:'<,'>lua OpenUrlsFromSelectionAppend()<CR>]],
+  { noremap = true, silent = true }
+)
+
+function OpenUrlsFromSelectionAppend()
+  local start_line, end_line = vim.fn.line("'<"), vim.fn.line("'>")
+  local lines = vim.fn.getline(start_line, end_line)
+  -- 確保 lines 是表格格式
+  if type(lines) == "string" then
+    lines = { lines }
+  end
+  local urls = {}
+  for _, line in ipairs(lines) do
+    -- 提取URL（忽略描述部分）
+    local url = line:match("^%s*(https?://[%w%p]+)%s*")
+    if url then
+      -- 對 URL 進行引號包裹，避免特殊字符影響
+      table.insert(urls, url)
+    end
+  end
+  if #urls > 0 then
+    -- 構造系統命令：使用 --new-tab 打開 URL
+    for _, url in ipairs(urls) do
+      local cmd = string.format("open -a 'Google Chrome' '%s'", url)
+      print("Executing: " .. cmd) -- 調試資訊
+      vim.fn.system(cmd)
+    end
+  else
+    print("No valid URLs found in selection!")
+  end
+end
+
+vim.api.nvim_set_keymap("v", "<leader>o", [[:'<,'>lua OpenUrlsFromSelection()<CR>]], { noremap = true, silent = true })
+function OpenUrlsFromSelection()
+  local start_line, end_line = vim.fn.line("'<"), vim.fn.line("'>")
+  local lines = vim.fn.getline(start_line, end_line)
+  -- 確保 lines 是表格格式
+  if type(lines) == "string" then
+    lines = { lines }
+  end
+  local urls = {}
+  for _, line in ipairs(lines) do
+    -- 提取URL（忽略描述部分）
+    local url = line:match("^%s*(https?://[%w%p]+)%s*")
+    if url then
+      -- 用單引號包裹URL
+      table.insert(urls, "'" .. url .. "'")
+    end
+  end
+  if #urls > 0 then
+    -- 將URL列表拼接成單一命令，打開Chrome
+    local cmd = "open -na 'Google Chrome' --args --new-window " .. table.concat(urls, " ")
+    print("Executing: " .. cmd) -- 調試資訊
+    vim.fn.system(cmd)
+  else
+    print("No valid URLs found in selection!")
+  end
+end
