@@ -1,14 +1,14 @@
 return {
   "nvim-neorg/neorg",
   dependencies = {
-    "luarocks.nvim",
+    -- "luarocks.nvim", // removed 2025/2/7.
     { "nvim-lua/plenary.nvim" },
     { "nvim-neorg/neorg-telescope" },
   },
   lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
   version = "*", -- Pin Neorg to the latest stable release
   config = function()
-    vim.keymap.set( "n", "\\f", "<Plug>(neorg.telescope.insert_file_link)", { desc = "Insert file link" })
+    vim.keymap.set("n", "\\f", "<Plug>(neorg.telescope.insert_file_link)", { desc = "Insert file link" })
     require("neorg").setup({
       configure_parsers = true,
       install_parsers = true,
@@ -58,7 +58,6 @@ return {
         --     render_on_enter = true,
         --     renderer = "core.integrations.image",
         -- }
-        -- },
         ["core.export.markdown"] = {
           config = {
             extension = "md",
@@ -70,12 +69,12 @@ return {
             strategy = "default",
           },
         },
-        ["core.completion"] = {
-          config = {
-            engine = "nvim-cmp",
-            name = "[Neorg]",
-          },
-        },
+        -- ["core.completion"] = {
+        --   config = {
+        --     engine = "nvim-cmp",
+        --     name = "[Neorg]",
+        --   },
+        -- },
         ["core.presenter"] = {
           config = {
             zen_mode = "zen-mode",

@@ -140,3 +140,32 @@ function OpenUrlsFromSelection()
     print("No valid URLs found in selection!")
   end
 end
+
+vim.api.nvim_set_keymap("v", "<leader>p", [[:'<,'>lua OpenPDFsFromSelection()<CR>]], { noremap = true, silent = true })
+function OpenPDFsFromSelection()
+  -- 獲取選中區域的行數範圍
+  local start_line, end_line = vim.fn.line("'<"), vim.fn.line("'>")
+  -- 獲取選中的文字行
+  local lines = vim.fn.getline(start_line, end_line)
+  -- 確保 lines 是表格格式
+  if type(lines) == "string" then
+    lines = { lines }
+  end
+  local pdf_files = {}
+  for _, line in ipairs(lines) do
+    -- 提取 PDF 檔案路徑，假設檔案路徑以 ".pdf" 結尾
+    local pdf_path = line:match("^%s*(.-%.pdf)%s*$")
+    if pdf_path then
+      table.insert(pdf_files, "'" .. pdf_path .. "'")
+    end
+  end
+  if #pdf_files > 0 then
+    for i = 1, #pdf_files do
+      local cmd = "open -a 'PDF Expert' " .. pdf_files[i]
+      print("Executing: " .. cmd) -- 調試資訊
+      vim.fn.system(cmd)
+    end
+  else
+    print("No valid PDF files found in selection!")
+  end
+end

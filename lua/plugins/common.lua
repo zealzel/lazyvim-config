@@ -22,12 +22,6 @@ return {
   "sunaku/tmux-navigate",
   "nvimdev/lspsaga.nvim",
   {
-    "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    event = "VeryLazy",
-    config = true,
-  },
-  {
     "folke/noice.nvim",
     opts = {
       presets = {
@@ -45,11 +39,14 @@ return {
       },
     },
   },
-  {
-    "vhyrro/luarocks.nvim",
-    priority = 1000,
-    config = true,
-  },
+  -- rocks = {
+  --   hererocks = true, -- recommended if you do not have global installation of Lua 5.1.
+  -- },
+  -- {
+  --   "vhyrro/luarocks.nvim",
+  --   priority = 1000,
+  --   config = true,
+  -- },
   {
     "echasnovski/mini.nvim",
     version = false,
@@ -131,5 +128,25 @@ return {
       -- Only if you're using the Telescope extension
       "nvim-telescope/telescope.nvim",
     },
+  },
+  {
+    "mpas/marp-nvim",
+    config = function()
+      require("marp").setup({
+        port = 8080,
+        wait_for_response_timeout = 30,
+        wait_for_response_delay = 1,
+      })
+    end,
+  },
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end,
   },
 }

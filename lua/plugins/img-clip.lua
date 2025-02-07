@@ -2,7 +2,7 @@
 
 return {
   "HakonHarnes/img-clip.nvim",
-  enabled = false,
+  enabled = true,
   event = "VeryLazy",
   opts = {
     -- add options here
@@ -84,6 +84,10 @@ return {
       -- process_cmd = "convert - -sampling-factor 4:2:0 -strip -interlace JPEG -colorspace RGB -quality 75 jpg:-",
       -- process_cmd = "convert - -strip -interlace Plane -gaussian-blur 0.05 -quality 75 jpg:-",
       --
+      drag_and_drop = {
+        enabled = true, ---@type boolean | fun(): boolean
+        insert_mode = false, ---@type boolean | fun(): boolean
+      },
     },
 
     -- filetype specific options
@@ -106,6 +110,9 @@ return {
         -- -- This will dynamically configure the alternative text to show the
         -- -- same that you configured as the "file_name" above
         template = "![$FILE_NAME]($FILE_PATH)", ---@type string
+      },
+      norg = {
+        template = ".image $FILE_PATH", ---@type string
       },
     },
   },
