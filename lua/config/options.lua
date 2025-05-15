@@ -45,6 +45,8 @@ vim.g.python3_host_prog = "/Users/zealzel/.pyenv/versions/3.10.8/bin/python3"
 -- vim.g.python3_host_prog = "/Users/zealzel/.pyenv/versions/3.12.0/bin/python3"
 -- vim.g.python3_host_prog = "/usr/local/bin/python3"
 
+vim.g.lazyvim_check_order = false
+
 -- vim.opt.clipboard:append("unnamedplus")
 -- vim.opt.clipboard:append("unnamedplus")
 vim.opt.clipboard = "unnamed,unnamedplus"
