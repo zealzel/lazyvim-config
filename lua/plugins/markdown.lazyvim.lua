@@ -145,7 +145,8 @@ return {
     "MeanderingProgrammer/markdown.nvim",
     enabled = true,
     opts = {
-      file_types = { "markdown", "norg", "rmd", "org", "Avante" },
+      -- file_types = { "markdown", "norg", "rmd", "org", "Avante" },
+      file_types = { "markdown", "norg", "rmd", "org", "Avante", "CodeCompanion" },
       sign = {
         -- Turn on / off sign rendering
         enabled = true,

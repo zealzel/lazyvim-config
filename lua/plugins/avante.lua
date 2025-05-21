@@ -2,28 +2,24 @@ return {
   "yetone/avante.nvim",
   event = "VeryLazy",
   version = false, -- Never set this value to "*"! Never!
+  config = function()
+    require("avante").setup({
+      system_prompt = function()
+        local hub = require("mcphub").get_hub_instance()
+        return hub:get_active_servers_prompt()
+      end,
+      -- The custom_tools type supports both a list and a function that returns a list. Using a function here prevents requiring mcphub before it's loaded
+      custom_tools = function()
+        return {
+          require("mcphub.extensions.avante").mcp_tool(),
+        }
+      end,
+    })
+  end,
   opts = {
     -- add any opts here
     -- for example
     provider = "openai",
-    -- mappings = {
-    --   ask = "<leader>ha",
-    --   edit = "<leader>he",
-    --   refresh = "<leader>hr",
-    --   --- @class AvanteConflictMappings
-    --   diff = {
-    --     ours = "co",
-    --     theirs = "ct",
-    --     none = "c0",
-    --     both = "cb",
-    --     next = "]x",
-    --     prev = "[x",
-    --   },
-    --   jump = {
-    --     next = "]]",
-    --     prev = "[[",
-    --   },
-    -- },
     openai = {
       endpoint = "https://api.openai.com/v1",
       model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
@@ -31,6 +27,41 @@ return {
       temperature = 0,
       max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
       --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
+      disable_tools = false, -- disable tools!
+    },
+    rag_service = {
+      enabled = false, -- Enables the RAG service
+      host_mount = os.getenv("HOME"), -- Host mount path for the rag service
+      provider = "openai", -- The provider to use for RAG service (e.g. openai or ollama)
+      llm_model = "", -- The LLM model to use for RAG service
+      embed_model = "", -- The embedding model to use for RAG service
+      endpoint = "https://api.openai.com/v1", -- The API endpoint for RAG service
+    },
+    web_search_engine = {
+      provider = "brave", -- tavily, serpapi, searchapi, google, kagi, brave, or searxng
+      proxy = nil, -- proxy support, e.g., http://127.0.0.1:7890
+    },
+    -- behaviour = {
+    --   auto_focus_sidebar = true,
+    --   auto_suggestions = false,
+    --   auto_suggestions_respect_ignore = false,
+    --   auto_set_highlight_group = true,
+    --   auto_set_keymaps = false,
+    --   auto_apply_diff_after_generation = false,
+    --   jump_result_buffer_on_finish = false,
+    --   support_paste_from_clipboard = false,
+    --   minimize_diff = true,
+    --   enable_token_counting = false,
+    --   enable_cursor_planning_mode = false,
+    --   enable_claude_text_editor_tool_mode = false,
+    --   use_cwd_as_project_root = false,
+    -- },
+    windows = {
+      position = "right", -- "right" | "left" | "top" | "bottom" | "smart"
+      wrap = true,
+      ask = {
+        start_insert = false,
+      },
     },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
