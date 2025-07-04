@@ -2,7 +2,11 @@ return {
   "nvim-treesitter/nvim-treesitter",
   -- build = ":TSUpdate",
   event = { "BufReadPre", "BufNewFile" },
+  -- lazy = false,
   opts = {
+    -- fold = {
+    --   enable = true,
+    -- },
     highlight = { enable = true },
     indent = { enable = true },
     ensure_installed = {
@@ -122,4 +126,17 @@ return {
       },
     },
   },
+  -- config = function(_, opts)
+  --   require("nvim-treesitter.configs").setup(opts)
+  --   -- 檔案讀取完（Treesitter 開始解析）後，稍微延遲再執行 zx
+  --   vim.api.nvim_create_autocmd("BufReadPost", {
+  --     callback = function()
+  --       -- 延遲 30 ms，等解析完再重算 fold
+  --       vim.defer_fn(function()
+  --         -- silent! 防止沒有 fold 時出現訊息
+  --         pcall(vim.cmd, "silent! normal! zx")
+  --       end, 30)
+  --     end,
+  --   })
+  -- end,
 }

@@ -50,11 +50,21 @@ local mappings = {
   { "<leader>cn", ":NullLsInfo<cr>", desc = "NullLs Info" },
   { "<leader>cj", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next Dianostic" },
   { "<leader>ck", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Previous Dianostic" },
+  -- Diffview group
+  { "<leader>D", group = "Diffview" }, -- ✅ 新推薦格式
+  { "<leader>DD", ":DiffviewOpen<CR>", desc = "Diffview Open" },
+  { "<leader>DF", ":DiffviewFileHistory %<CR>", desc = "File History (current file)" },
+  { "<leader>Dd", ":DiffviewOpen -uno<CR>", desc = "Diffview Open (hide untracked)" },
+  { "<leader>DC", "<cmd>set hidden<cr><cmd>DiffviewClose<cr><cmd>set nohidden<cr>", desc = "Diffview Close" },
 }
 
 local opts = { prefix = "<leader>" }
--- wk.register(mappings, opts)
 wk.add(mappings, opts)
+-- old way
+-- wk.register(mappings, opts)
+-- wk.register({
+--   D = { name = "+Diffview" },
+-- }, opts)
 
 function _G.set_terminal_keymaps()
   local opts = { buffer = 0 }

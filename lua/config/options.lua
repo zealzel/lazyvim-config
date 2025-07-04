@@ -25,8 +25,10 @@ opt.timeoutlen = 1000
 -- vim.g.maplocalleader = ","
 
 opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" --- https://github.com/LazyVim/LazyVim/issues/1319
 opt.foldlevel = 99
+-- opt.foldenable = false
 vim.g.lazyvim_statuscolumn = {
   folds_open = true, -- show fold sign when fold is open, default: false
   folds_githl = false, -- highlight fold sign with git sign color, default: false
@@ -171,3 +173,7 @@ function OpenPDFsFromSelection()
     print("No valid PDF files found in selection!")
   end
 end
+
+vim.g.augment_workspace_folders = {
+  "/Users/zealzel/Documents/Codes/Current/ssi/python+rust/facty_audio_python_module",
+}
