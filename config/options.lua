@@ -43,3 +43,5 @@ vim.o.shell = "bash"
 -- https://github.com/DetachHead/basedpyright
 -- ref: https://github.com/LazyVim/LazyVim/discussions/3350
 vim.g.lazyvim_python_lsp = "basedpyright"
+
+-- let g:augment_workspace_folders = ['/path/to/project', '~/another-project']

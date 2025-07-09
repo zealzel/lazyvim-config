@@ -53,7 +53,6 @@ local mappings = {
 }
 
 local opts = { prefix = "<leader>" }
--- wk.register(mappings, opts)
 wk.add(mappings, opts)
 
 function _G.set_terminal_keymaps()
