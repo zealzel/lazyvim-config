@@ -95,37 +95,37 @@ return {
       },
     },
   },
-  { -- Markdown preview
-    "iamcco/markdown-preview.nvim",
-    -- cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown" },
-    -- build = function()
-    --   vim.fn["mkdp#util#install"]()
-    -- end,
-    build = "cd app && yarn install",
-    init = function()
-      vim.g.mkdp_filetypes = { "markdown" }
-      vim.g.mkdp_markdown_css = "/Users/zealzel/.dotfiles/lazyvim-config/markdown_iamcco.css"
-      -- vim.g.mkdp_markdown_css = "~/.dotfiles/lazyvim-config/markdown_iamcco.css"
-    end,
-    keys = {
-      {
-        "<leader>cp",
-        ft = "markdown",
-        "<cmd>MarkdownPreviewToggle<cr>",
-        desc = "Markdown Preview",
-      },
-    },
-    config = function()
-      vim.cmd([[do FileType]])
-      vim.cmd([[
-        function OpenMarkdownPreview (url)
-            execute "silent ! open -a 'Google Chrome' -n --args --new-window " . a:url
-        endfunction
-      ]])
-      vim.g.mkdp_browserfunc = "OpenMarkdownPreview"
-    end,
-  },
+  -- { -- Markdown preview
+  --   "iamcco/markdown-preview.nvim",
+  --   -- cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+  --   ft = { "markdown" },
+  --   -- build = function()
+  --   --   vim.fn["mkdp#util#install"]()
+  --   -- end,
+  --   build = "cd app && yarn install",
+  --   init = function()
+  --     vim.g.mkdp_filetypes = { "markdown" }
+  --     vim.g.mkdp_markdown_css = "/Users/zealzel/.dotfiles/lazyvim-config/markdown_iamcco.css"
+  --     -- vim.g.mkdp_markdown_css = "~/.dotfiles/lazyvim-config/markdown_iamcco.css"
+  --   end,
+  --   keys = {
+  --     {
+  --       "<leader>cp",
+  --       ft = "markdown",
+  --       "<cmd>MarkdownPreviewToggle<cr>",
+  --       desc = "Markdown Preview",
+  --     },
+  --   },
+  --   config = function()
+  --     vim.cmd([[do FileType]])
+  --     vim.cmd([[
+  --       function OpenMarkdownPreview (url)
+  --           execute "silent ! open -a 'Google Chrome' -n --args --new-window " . a:url
+  --       endfunction
+  --     ]])
+  --     vim.g.mkdp_browserfunc = "OpenMarkdownPreview"
+  --   end,
+  -- },
   {
     "OXY2DEV/markview.nvim",
     enabled = false,
