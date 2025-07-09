@@ -29,16 +29,7 @@ return {
       },
     },
     bottom = {
-      -- toggleterm / lazyterm at the bottom with a height of 40% of the screen
-      {
-        ft = "toggleterm",
-        size = { height = 0.4 },
-        -- exclude floating windows
-        filter = function(buf, win)
-          return vim.api.nvim_win_get_config(win).relative == ""
-        end,
-      },
-      -- {
+      -- { After LazyVim 1.3, it introduce snacks_terminal instead
       --   ft = "lazyterm",
       --   title = "LazyTerm",
       --   size = { height = 0.4 },

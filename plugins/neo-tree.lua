@@ -6,13 +6,19 @@ local log = require("plenary.log").new({
 local function get_relative_path(base, target)
   local base_parts = vim.split(base, "/")
   local target_parts = vim.split(target, "/")
-
   while #base_parts > 0 and #target_parts > 0 and base_parts[1] == target_parts[1] do
     table.remove(base_parts, 1)
     table.remove(target_parts, 1)
   end
-
   return string.rep("../", #base_parts) .. table.concat(target_parts, "/")
+end
+
+local function get_parent_directory(path)
+  if vim.fn.isdirectory(path) == 1 then
+    return path
+  else
+    return vim.fn.fnamemodify(path, ":h")
+  end
 end
 
 local function copy_path(state)
@@ -26,6 +32,8 @@ local function copy_path(state)
   local modify = vim.fn.fnamemodify
   local relative_path = get_relative_path(current_work_dir, filepath)
   -- log.debug("relative_path: " .. relative_path)
+  local parent_directory = get_parent_directory(filepath)
+  log.debug("parent_directory: " .. parent_directory)
   local results = {
     filepath,
     get_relative_path(current_work_dir, filepath),
@@ -34,6 +42,7 @@ local function copy_path(state)
     filename,
     modify(filename, ":r"),
     modify(filename, ":e"),
+    parent_directory,
   }
 
   vim.ui.select({
@@ -43,6 +52,7 @@ local function copy_path(state)
     "4. Filename: " .. results[4],
     "5. Filename without extension: " .. results[5],
     "6. Extension of the filename: " .. results[6],
+    "7. Parent directory: " .. results[7],
   }, { prompt = "Choose to copy to clipboard:" }, function(choice)
     if choice then
       local i = tonumber(choice:sub(1, 1))

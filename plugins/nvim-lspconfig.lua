@@ -5,5 +5,8 @@ return {
     opts.diagnostics = {
       float = { border = "rounded" },
     }
+    opts.inlay_hints = {
+      enable = false,
+    }
   end,
 }

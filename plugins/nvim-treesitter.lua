@@ -2,7 +2,11 @@ return {
   "nvim-treesitter/nvim-treesitter",
   -- build = ":TSUpdate",
   event = { "BufReadPre", "BufNewFile" },
+  -- lazy = false,
   opts = {
+    -- fold = {
+    --   enable = true,
+    -- },
     highlight = { enable = true },
     indent = { enable = true },
     ensure_installed = {
@@ -49,7 +53,7 @@ return {
           ["]a"] = "@parameter.inner",
           ["]f"] = { query = "@call.outer", desc = "Next function call start" },
           ["]m"] = { query = "@function.outer", desc = "Next method/function def start" },
-          ["]c"] = { query = "@class.outer", desc = "Next class start" },
+          -- ["]c"] = { query = "@class.outer", desc = "Next class start" },
           ["]i"] = { query = "@conditional.outer", desc = "Next conditional start" },
           ["]l"] = { query = "@loop.outer", desc = "Next loop start" },
           ["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
@@ -59,7 +63,7 @@ return {
           ["]A"] = "@parameter.inner",
           ["]F"] = { query = "@call.outer", desc = "Next function call end" },
           ["]M"] = { query = "@function.outer", desc = "Next method/function def end" },
-          ["]C"] = { query = "@class.outer", desc = "Next class end" },
+          -- ["]C"] = { query = "@class.outer", desc = "Next class end" },
           ["]I"] = { query = "@conditional.outer", desc = "Next conditional end" },
           ["]L"] = { query = "@loop.outer", desc = "Next loop end" },
         },
@@ -67,15 +71,16 @@ return {
           ["[a"] = "@parameter.inner",
           ["[f"] = { query = "@call.outer", desc = "Prev function call start" },
           ["[m"] = { query = "@function.outer", desc = "Prev method/function def start" },
-          ["[c"] = { query = "@class.outer", desc = "Prev class start" },
+          -- ["[c"] = { query = "@class.outer", desc = "Prev class start" },
           ["[i"] = { query = "@conditional.outer", desc = "Prev conditional start" },
           ["[l"] = { query = "@loop.outer", desc = "Prev loop start" },
+          ["[z"] = { query = "@fold", query_group = "folds", desc = "Prev fold" },
         },
         goto_previous_end = {
           ["[A"] = "@parameter.inner",
           ["[F"] = { query = "@call.outer", desc = "Prev function call end" },
           ["[M"] = { query = "@function.outer", desc = "Prev method/function def end" },
-          ["[C"] = { query = "@class.outer", desc = "Prev class end" },
+          -- ["[C"] = { query = "@class.outer", desc = "Prev class end" },
           ["[I"] = { query = "@conditional.outer", desc = "Prev conditional end" },
           ["[L"] = { query = "@loop.outer", desc = "Prev loop end" },
         },
@@ -121,4 +126,17 @@ return {
       },
     },
   },
+  -- config = function(_, opts)
+  --   require("nvim-treesitter.configs").setup(opts)
+  --   -- 檔案讀取完（Treesitter 開始解析）後，稍微延遲再執行 zx
+  --   vim.api.nvim_create_autocmd("BufReadPost", {
+  --     callback = function()
+  --       -- 延遲 30 ms，等解析完再重算 fold
+  --       vim.defer_fn(function()
+  --         -- silent! 防止沒有 fold 時出現訊息
+  --         pcall(vim.cmd, "silent! normal! zx")
+  --       end, 30)
+  --     end,
+  --   })
+  -- end,
 }

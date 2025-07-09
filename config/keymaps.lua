@@ -50,10 +50,21 @@ local mappings = {
   { "<leader>cn", ":NullLsInfo<cr>", desc = "NullLs Info" },
   { "<leader>cj", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next Dianostic" },
   { "<leader>ck", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Previous Dianostic" },
+  -- Diffview group
+  { "<leader>D", group = "Diffview" }, -- ✅ 新推薦格式
+  { "<leader>DD", ":DiffviewOpen<CR>", desc = "Diffview Open" },
+  { "<leader>DF", ":DiffviewFileHistory %<CR>", desc = "File History (current file)" },
+  { "<leader>Dd", ":DiffviewOpen -uno<CR>", desc = "Diffview Open (hide untracked)" },
+  { "<leader>DC", "<cmd>set hidden<cr><cmd>DiffviewClose<cr><cmd>set nohidden<cr>", desc = "Diffview Close" },
 }
 
 local opts = { prefix = "<leader>" }
 wk.add(mappings, opts)
+-- old way
+-- wk.register(mappings, opts)
+-- wk.register({
+--   D = { name = "+Diffview" },
+-- }, opts)
 
 function _G.set_terminal_keymaps()
   local opts = { buffer = 0 }
@@ -67,7 +78,7 @@ function _G.set_terminal_keymaps()
   -- vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
   -- vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
 end
-
+--
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
@@ -93,43 +104,3 @@ vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f_expr, { expr = t
 vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F_expr, { expr = true })
 vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t_expr, { expr = true })
 vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T_expr, { expr = true })
-
--- ====================================================
--- nvim-ros2
--- ref: https://github.com/ErickKramer/nvim-ros2
--- ====================================================
-vim.keymap.set("n", "<leader>ri", ":Telescope ros2 interfaces<CR>", { desc = "[ROS 2]: List interfaces" })
-vim.keymap.set("n", "<leader>rn", ":Telescope ros2 nodes<CR>", { desc = "[ROS 2]: List nodes" })
-vim.keymap.set("n", "<leader>ra", ":Telescope ros2 actions<CR>", { desc = "[ROS 2]: List actions" })
-vim.keymap.set("n", "<leader>rt", ":Telescope ros2 topics_info<CR>", { desc = "[ROS 2]: List topics" })
-vim.keymap.set("n", "<leader>rs", ":Telescope ros2 services<CR>", { desc = "[ROS 2]: List services" })
-
--- ====================================================
--- ROS 2 related commands
--- ref: https://github.com/ErickKramer/ros2-with-neovim/blob/humble/.config/nvim/init.lua
--- ====================================================
--- if you want compile_commands.json to work, you need to use clang/clang++ to replace gcc/g++
--- ref: https://www.reddit.com/r/ROS/comments/15yr1zm/ros_c_coding_setup/
-vim.api.nvim_command([[
-  command! ColconBuild :! CC=clang CXX=clang++ colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-]])
-vim.api.nvim_command([[
-  command! -nargs=1 ColconBuildSingle :! CC=clang CXX=clang++ colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON --packages-up-to <args>
-]])
-vim.api.nvim_command([[
-  command! ColconBuildDebug :! CC=clang CXX=clang++ colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug
-]])
-vim.api.nvim_command([[
-  command! -nargs=1 ColconBuildDebugSingle :! CC=clang CXX=clang++ colcon build --symlink-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug --packages-up-to <args>
-]])
-
--- Test
-vim.api.nvim_command([[
-  command! ColconTest :! colcon test
-]])
-vim.api.nvim_command([[
-  command! -nargs=1 ColconTestSingle :! colcon test --packages-select <args>
-]])
-vim.api.nvim_command([[
-  command! ColconTestResult :! colcon test-result --all
-]])

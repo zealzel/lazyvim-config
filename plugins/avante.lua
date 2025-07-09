@@ -1,34 +1,122 @@
 return {
   "yetone/avante.nvim",
   event = "VeryLazy",
-  build = "make",
+  version = false, -- Never set this value to "*"! Never!
+  config = function()
+    require("avante").setup({
+      system_prompt = function()
+        local hub = require("mcphub").get_hub_instance()
+        return hub:get_active_servers_prompt()
+      end,
+      -- The custom_tools type supports both a list and a function that returns a list. Using a function here prevents requiring mcphub before it's loaded
+      custom_tools = function()
+        return {
+          require("mcphub.extensions.avante").mcp_tool(),
+        }
+      end,
+    })
+  end,
   opts = {
     -- add any opts here
-    provider = "openai",
-    mappings = {
-      ask = "<leader>ha",
-      edit = "<leader>he",
-      refresh = "<leader>hr",
-      --- @class AvanteConflictMappings
-      diff = {
-        ours = "co",
-        theirs = "ct",
-        none = "c0",
-        both = "cb",
-        next = "]x",
-        prev = "[x",
+    -- for example
+    provider = "claude",
+    providers = {
+      claude = {
+        endpoint = "https://api.anthropic.com",
+        model = "claude-sonnet-4-20250514",
+        timeout = 30000, -- Timeout in milliseconds
+        extra_request_body = {
+          temperature = 0.75,
+          max_tokens = 20480,
+        },
       },
-      jump = {
-        next = "]]",
-        prev = "[[",
+      openai = {
+        endpoint = "https://api.openai.com/v1",
+        model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
+        timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
+        temperature = 0,
+        max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
+        --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
+        disable_tools = false, -- disable tools!
       },
     },
-    hints = { enabled = true },
+    rag_service = {
+      enabled = false, -- Enables the RAG service
+      host_mount = os.getenv("HOME"), -- Host mount path for the rag service
+      provider = "openai", -- The provider to use for RAG service (e.g. openai or ollama)
+      llm_model = "", -- The LLM model to use for RAG service
+      embed_model = "", -- The embedding model to use for RAG service
+      endpoint = "https://api.openai.com/v1", -- The API endpoint for RAG service
+    },
+    web_search_engine = {
+      provider = "brave", -- tavily, serpapi, searchapi, google, kagi, brave, or searxng
+      proxy = nil, -- proxy support, e.g., http://127.0.0.1:7890
+    },
+    -- behaviour = {
+    --   enable_token_counting = false,
+    -- },
+    -- behaviour = {
+    --   auto_focus_sidebar = true,
+    --   auto_suggestions = false,
+    --   auto_suggestions_respect_ignore = false,
+    --   auto_set_highlight_group = true,
+    --   auto_set_keymaps = false,
+    --   auto_apply_diff_after_generation = false,
+    --   jump_result_buffer_on_finish = false,
+    --   support_paste_from_clipboard = false,
+    --   minimize_diff = true,
+    --   enable_token_counting = false,
+    --   enable_cursor_planning_mode = false,
+    --   enable_claude_text_editor_tool_mode = false,
+    --   use_cwd_as_project_root = false,
+    -- },
+    windows = {
+      position = "right", -- "right" | "left" | "top" | "bottom" | "smart"
+      wrap = true,
+      ask = {
+        start_insert = false,
+      },
+    },
   },
+  -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+  build = "make",
+  -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
   dependencies = {
-    "nvim-tree/nvim-web-devicons",
+    "nvim-treesitter/nvim-treesitter",
     "stevearc/dressing.nvim",
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
+    --- The below dependencies are optional,
+    "echasnovski/mini.pick", -- for file_selector provider mini.pick
+    "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+    "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+    "ibhagwan/fzf-lua", -- for file_selector provider fzf
+    "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+    "zbirenbaum/copilot.lua", -- for providers='copilot'
+    {
+      -- support for image pasting
+      "HakonHarnes/img-clip.nvim",
+      event = "VeryLazy",
+      opts = {
+        -- recommended settings
+        default = {
+          embed_image_as_base64 = false,
+          prompt_for_file_name = false,
+          drag_and_drop = {
+            insert_mode = true,
+          },
+          -- required for Windows users
+          use_absolute_path = true,
+        },
+      },
+    },
+    {
+      -- Make sure to set this up properly if you have lazy=true
+      "MeanderingProgrammer/render-markdown.nvim",
+      opts = {
+        file_types = { "markdown", "Avante" },
+      },
+      ft = { "markdown", "Avante" },
+    },
   },
 }
