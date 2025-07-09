@@ -232,7 +232,7 @@ return {
     },
     cmd = { "CsvViewEnable", "CsvViewDisable", "CsvViewToggle" },
   },
-  { "augmentcode/augment.vim" },
+  -- { "augmentcode/augment.vim" },
   -- {
   --   "kevinhwang91/nvim-ufo",
   --   dependencies = {
