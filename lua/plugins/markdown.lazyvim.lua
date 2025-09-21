@@ -66,27 +66,6 @@ return {
     "mason-org/mason.nvim",
     opts = { ensure_installed = { "markdownlint-cli2", "markdown-toc" } },
   },
-  -- {
-  --   "mason-org/mason-lspconfig.nvim",
-  --   automatic_enable = true,
-  --   dependencies = {
-  --     { "mason-org/mason.nvim", opts = {} },
-  --     "neovim/nvim-lspconfig",
-  --   },
-  -- },
-  -- {
-  --   "nvimtools/none-ls.nvim",
-  --   optional = true,
-  --   dependencies = {
-  --     "nvimtools/none-ls-extras.nvim",
-  --   },
-  --   opts = function(_, opts)
-  --     local nls = require("null-ls")
-  --     opts.sources = vim.list_extend(opts.sources or {}, {
-  --       nls.builtins.diagnostics.markdownlint_cli2,
-  --     })
-  --   end,
-  -- },
   {
     "mfussenegger/nvim-lint",
     opts = {
@@ -98,14 +77,6 @@ return {
       },
     },
   },
-  -- {
-  --   "neovim/nvim-lspconfig",
-  --   opts = {
-  --     servers = {
-  --       marksman = {},
-  --     },
-  --   },
-  -- },
   { -- Markdown preview
     "iamcco/markdown-preview.nvim",
     -- cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
@@ -116,8 +87,22 @@ return {
     build = "cd app && yarn install",
     init = function()
       vim.g.mkdp_filetypes = { "markdown" }
-      vim.g.mkdp_markdown_css = "/Users/zealzel/.dotfiles/lazyvim-config/markdown_iamcco.css"
+      -- 指定自訂樣式（GitHub 風）
+      -- vim.g.mkdp_markdown_css = vim.fn.expand("/Users/zealzel/.dotfiles/lazyvim-config/markdown_iamcco.css")
       -- vim.g.mkdp_markdown_css = "~/.dotfiles/lazyvim-config/markdown_iamcco.css"
+      vim.g.mkdp_markdown_css = vim.fn.expand("/Users/zealzel/.config/nvim/styles/github-markdown.css")
+      -- vim.g.mkdp_markdown_css = vim.fn.expand("~/.dotfiles/lazyvim-config/github-markdown.css")
+      -- 指定語法高亮樣式（可選）
+      -- vim.g.mkdp_highlight_css = vim.fn.expand("~/.config/nvim/styles/highlight-github.css")
+      -- 讓內容套上 .markdown-body（這樣 github-markdown.css 才會生效）
+      vim.g.mkdp_preview_options = {
+        markdown = {
+          toc = true,
+          disable_filename = 0,
+        },
+        content_editable = false,
+        disable_sync_scroll = 0,
+      }
     end,
     keys = {
       {

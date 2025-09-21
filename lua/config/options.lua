@@ -187,7 +187,7 @@ vim.g.augment_workspace_folders = {
 -- This is using nerd fonts, so you might not be able to see the icons.
 local checkboxes = {
   { char = " ", icon = "󰄱", label = "to-do" },
-  { char = "/", icon = "", label = "in-progress" },
+  { char = "/", icon = "", label = "in-progress" },
   { char = "x", icon = "󰱒", label = "done" },
 }
 
@@ -195,14 +195,11 @@ local function select_checkbox()
   if vim.bo.filetype ~= "markdown" then
     return
   end
-
   local pattern = "%- %[.-%] "
-
   local line = vim.api.nvim_get_current_line()
   if not line:match(pattern) then
     return
   end
-
   vim.ui.select(checkboxes, {
     prompt = "Checkboxes:",
     format_item = function(item)
@@ -212,11 +209,40 @@ local function select_checkbox()
     if not choice then
       return
     end
-
     local checkbox = string.format("- [%s] ", choice.char)
     local modified_line = line:gsub(pattern, checkbox, 1)
     vim.api.nvim_set_current_line(modified_line)
   end)
 end
 
-vim.keymap.set("n", "<leader>tt", select_checkbox)
+local function check_checkbox()
+  if vim.bo.filetype ~= "markdown" then
+    return
+  end
+  local pattern = "%- %[.-%] "
+  local line = vim.api.nvim_get_current_line()
+  if not line:match(pattern) then
+    return
+  end
+  local checkbox = "- [x] "
+  local modified_line = line:gsub(pattern, checkbox, 1)
+  vim.api.nvim_set_current_line(modified_line)
+end
+
+local function uncheck_checkbox()
+  if vim.bo.filetype ~= "markdown" then
+    return
+  end
+  local pattern = "%- %[.-%] "
+  local line = vim.api.nvim_get_current_line()
+  if not line:match(pattern) then
+    return
+  end
+  local checkbox = "- [ ] "
+  local modified_line = line:gsub(pattern, checkbox, 1)
+  vim.api.nvim_set_current_line(modified_line)
+end
+
+vim.keymap.set("n", "<leader>tt", select_checkbox, { desc = "Select checkbox status" })
+vim.keymap.set("n", "<leader>td", check_checkbox, { desc = "Check checkbox" })
+vim.keymap.set("n", "<leader>tu", uncheck_checkbox, { desc = "Uncheck checkbox" })

@@ -40,12 +40,12 @@ vim.api.nvim_create_autocmd({ "VimEnter", "VimLeavePre" }, {
 })
 
 -- （可選）寫入這些文件時就清（依需求增減）
-vim.api.nvim_create_autocmd("BufWritePost", {
-  group = grp,
-  pattern = { "*.md", "*.markdown", "*.norg", "*.org", "*.rst", "*.html" },
-  callback = purge_image_cache,
-  desc = "Purge Snacks image cache on save",
-})
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+--   group = grp,
+--   pattern = { "*.md", "*.markdown", "*.norg", "*.org", "*.rst", "*.html" },
+--   callback = purge_image_cache,
+--   desc = "Purge Snacks image cache on save",
+-- })
 
 -- 提供手動清快取的指令與快捷鍵
 vim.api.nvim_create_user_command("SnacksImagePurge", purge_image_cache, {})

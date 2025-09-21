@@ -65,8 +65,8 @@ return {
       enabled=true,
       doc = {
         enabled = true,
-        inline = true,  -- 不做行內渲染
-        float = false,   -- 不開浮動視窗渲染
+        inline = false,  -- 不做行內渲染
+        float = true,   -- 不開浮動視窗渲染
       },
       convert = {
         notify = true, -- show a notification on error
