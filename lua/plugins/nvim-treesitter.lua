@@ -1,13 +1,17 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   -- build = ":TSUpdate",
+  -- commit = "master",
   event = { "BufReadPre", "BufNewFile" },
   -- lazy = false,
   opts = {
+    highlight = {
+      enable = true,
+      disable = { "markdown", "markdown_inline" },
+    },
     -- fold = {
     --   enable = true,
     -- },
-    highlight = { enable = true },
     indent = { enable = true },
     ensure_installed = {
       "bash",

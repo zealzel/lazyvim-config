@@ -1,13 +1,12 @@
 return {
-  {
-    "rmagatti/auto-session",
-    dependencies = {
-      "nvim-telescope/telescope.nvim", -- Only needed if you want to use sesssion lens
-    },
-    config = function()
-      require("auto-session").setup({
-        auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-      })
-    end,
+  "rmagatti/auto-session",
+  lazy = false,
+
+  ---enables autocomplete for opts
+  ---@module "auto-session"
+  ---@type AutoSession.Config
+  opts = {
+    suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+    -- log_level = 'debug',
   },
 }

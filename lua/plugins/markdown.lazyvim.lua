@@ -62,20 +62,31 @@ return {
       },
     },
   },
-  {
-    "williamboman/mason.nvim",
+  { -- "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = { ensure_installed = { "markdownlint-cli2", "markdown-toc" } },
   },
-  {
-    "nvimtools/none-ls.nvim",
-    optional = true,
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      opts.sources = vim.list_extend(opts.sources or {}, {
-        nls.builtins.diagnostics.markdownlint_cli2,
-      })
-    end,
-  },
+  -- {
+  --   "mason-org/mason-lspconfig.nvim",
+  --   automatic_enable = true,
+  --   dependencies = {
+  --     { "mason-org/mason.nvim", opts = {} },
+  --     "neovim/nvim-lspconfig",
+  --   },
+  -- },
+  -- {
+  --   "nvimtools/none-ls.nvim",
+  --   optional = true,
+  --   dependencies = {
+  --     "nvimtools/none-ls-extras.nvim",
+  --   },
+  --   opts = function(_, opts)
+  --     local nls = require("null-ls")
+  --     opts.sources = vim.list_extend(opts.sources or {}, {
+  --       nls.builtins.diagnostics.markdownlint_cli2,
+  --     })
+  --   end,
+  -- },
   {
     "mfussenegger/nvim-lint",
     opts = {
@@ -87,14 +98,14 @@ return {
       },
     },
   },
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        marksman = {},
-      },
-    },
-  },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   opts = {
+  --     servers = {
+  --       marksman = {},
+  --     },
+  --   },
+  -- },
   { -- Markdown preview
     "iamcco/markdown-preview.nvim",
     -- cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
@@ -127,23 +138,20 @@ return {
     end,
   },
   {
-    "OXY2DEV/markview.nvim",
-    enabled = false,
-    lazy = false, -- Recommended
-    -- ft = "markdown" -- If you decide to lazy-load anyway
-
-    dependencies = {
-      -- You will not need this if you installed the
-      -- parsers manually
-      -- Or if the parsers are in your $RUNTIMEPATH
-      "nvim-treesitter/nvim-treesitter",
-
-      "nvim-tree/nvim-web-devicons",
-    },
-  },
-  {
-    "MeanderingProgrammer/markdown.nvim",
+    "MeanderingProgrammer/render-markdown.nvim",
     enabled = true,
+    -- render_modes = { "n", "c", "t" },
+    -- render_modes = {},
+    render_modes = false,
+    -- render_modes = true,
+    keys = {
+      {
+        "<leader>mm",
+        ft = "markdown",
+        "<cmd>RenderMarkdown toggle<cr>",
+        desc = "Toggle RenderMarkdown",
+      },
+    },
     opts = {
       -- file_types = { "markdown", "norg", "rmd", "org", "Avante" },
       file_types = { "markdown", "norg", "rmd", "org", "Avante", "CodeCompanion" },
@@ -232,6 +240,26 @@ return {
         row = "RenderMarkdownTableRow",
         -- Highlight for inline padding used to add back concealed space
         filler = "RenderMarkdownTableFill",
+      },
+      checkbox = {
+        enabled = true,
+        checked = {
+          icon = "󰱒 ",
+        },
+        unchecked = {
+          icon = "󰄱 ",
+        },
+        custom = {
+          in_progress = { raw = "[/]", rendered = " " }, -- 進行中
+          -- 緊急度三檔（全線條）
+          urgency_med = { raw = "[!]", rendered = "󰀪 " }, -- alert-circle-outline（若缺字，用 "! "）
+          urgency_high = { raw = "[!!]", rendered = "󰀦 " }, -- alert-outline（三角形線條，若缺字，用 "!! "）
+          urgency_low = { raw = "[i]", rendered = "󰋽 " }, -- information-outline（若缺字，用 "i "）
+          -- - 重要程度（P1 / P2 / P3）
+          importance_high = { raw = "[P1]", rendered = "󰎤 " }, -- 1-circle-outline
+          importance_med = { raw = "[P2]", rendered = "󰎥 " }, -- 2-circle-outline
+          importance_low = { raw = "[P3]", rendered = "󰎦 " }, -- 3-circle-outline
+        },
       },
       heading = {
         sign = true,

@@ -5,7 +5,7 @@ return {
       opts.servers.basedpyright = {
         settings = {
           basedpyright = {
-            analysis = { typeCheckingMode = "off" }, -- strict|standard|basic|off
+            analysis = { typeCheckingMode = "basic" }, -- strict|standard|basic|off
           },
         },
       }
@@ -19,7 +19,7 @@ return {
   --   end,
   -- },
   -- {
-  --   "williamboman/mason.nvim",
+  --   "williambomanwilliamboman/mason.nvim",
   --   enabled = true,
   --   opts = function(_, opts)
   --     table.insert(opts.ensure_installed, "black")

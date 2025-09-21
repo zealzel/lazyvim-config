@@ -7,6 +7,8 @@ local opt = vim.opt
 -- vim.cmd([[autocmd! ColorScheme * highlight CmpNormal guibg=#ff0000]])
 -- vim.cmd([[autocmd! ColorScheme * highlight CmpDocNormal guifg=#ffffff guibg=#00ff00]])
 
+vim.g.lazyvim_picker = "snacks" -- snacks.smart can preivew image files
+
 vim.api.nvim_set_hl(0, "CmpNormal", { bg = "NONE" })
 vim.api.nvim_set_hl(0, "CmpDocNormal", { bg = "NONE" })
 
@@ -53,7 +55,9 @@ vim.g.lazyvim_check_order = false
 -- vim.opt.clipboard:append("unnamedplus")
 vim.opt.clipboard = "unnamed,unnamedplus"
 
-vim.opt.conceallevel = 2
+-- vim.opt.conceallevel = 2
+vim.opt.conceallevel = 0
+vim.opt.concealcursor = ""
 
 opt.laststatus = 3
 
@@ -177,3 +181,42 @@ end
 vim.g.augment_workspace_folders = {
   "/Users/zealzel/Documents/Codes/Current/ssi/python+rust/facty_audio_python_module",
 }
+
+-- checkbox
+-- https://pierolescano.com/blog/a-picker-for-bullet-journal-style-checkboxes-for-neovim
+-- This is using nerd fonts, so you might not be able to see the icons.
+local checkboxes = {
+  { char = " ", icon = "󰄱", label = "to-do" },
+  { char = "/", icon = "", label = "in-progress" },
+  { char = "x", icon = "󰱒", label = "done" },
+}
+
+local function select_checkbox()
+  if vim.bo.filetype ~= "markdown" then
+    return
+  end
+
+  local pattern = "%- %[.-%] "
+
+  local line = vim.api.nvim_get_current_line()
+  if not line:match(pattern) then
+    return
+  end
+
+  vim.ui.select(checkboxes, {
+    prompt = "Checkboxes:",
+    format_item = function(item)
+      return string.format("%s %s", item.icon, item.label)
+    end,
+  }, function(choice)
+    if not choice then
+      return
+    end
+
+    local checkbox = string.format("- [%s] ", choice.char)
+    local modified_line = line:gsub(pattern, checkbox, 1)
+    vim.api.nvim_set_current_line(modified_line)
+  end)
+end
+
+vim.keymap.set("n", "<leader>tt", select_checkbox)

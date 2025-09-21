@@ -1,8 +1,7 @@
 return {
-  "epwalsh/obsidian.nvim",
+  "obsidian-nvim/obsidian.nvim",
   enabled = false,
   version = "*", -- recommended, use latest release instead of latest commit
-  lazy = true,
   ft = "markdown",
   -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
   -- event = {
@@ -12,16 +11,8 @@ return {
   --   "BufReadPre path/to/my-vault/*.md",
   --   "BufNewFile path/to/my-vault/*.md",
   -- },
-  dependencies = {
-    -- Required.
-    "nvim-lua/plenary.nvim",
-
-    -- see below for full list of optional dependencies 👇
-  },
-  vim.keymap.set("n", "\\oo", ":ObsidianOpen<CR>", { desc = "Open obsidian" }),
-  vim.keymap.set("n", "\\on", ":ObsidianNew<CR>", { desc = "New note" }),
-  vim.keymap.set("n", "\\oN", ":ObsidianNewFromTemplate<CR>", { desc = "New from template" }),
-  vim.keymap.set("n", "\\ot", ":ObsidianTemplate<CR>", { desc = "Templates" }),
+  ---@module 'obsidian'
+  ---@type obsidian.config
   opts = {
     workspaces = {
       {
@@ -33,13 +24,21 @@ return {
         path = "~/vaults/work",
       },
     },
-    templates = {
-      folder = "templates",
-      date_format = "%Y-%m-%d-%a",
-      time_format = "%H:%M",
+    -- fix conflict with render-markdown
+    ui = { enable = false },
+
+    -- see below for full list of options 👇
+  },
+  keys = {
+    { -- paste image from system clipboard
+      "<leader>mp",
+      "<cmd>ObsidianPasteImg<cr>",
+      desc = "Obsidian PasteImg",
     },
-    ui = {
-      enable = false, -- Use ui provided by markdown.nvim instead
+    { -- paste image from system clipboard
+      "<leader>mc",
+      "<cmd>ObsidianToggleCheckbox<cr>",
+      desc = "Iterate Checkbox Status",
     },
   },
 }

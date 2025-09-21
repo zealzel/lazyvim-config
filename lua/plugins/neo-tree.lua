@@ -1,7 +1,7 @@
-local log = require("plenary.log").new({
-  plugin = "my-plugin",
-  level = "debug",
-})
+-- local log = require("plenary.log").new({
+--   plugin = "my-plugin",
+--   level = "debug",
+-- })
 
 local function get_relative_path(base, target)
   local base_parts = vim.split(base, "/")
@@ -33,7 +33,7 @@ local function copy_path(state)
   local relative_path = get_relative_path(current_work_dir, filepath)
   -- log.debug("relative_path: " .. relative_path)
   local parent_directory = get_parent_directory(filepath)
-  log.debug("parent_directory: " .. parent_directory)
+  -- log.debug("parent_directory: " .. parent_directory)
   local results = {
     filepath,
     get_relative_path(current_work_dir, filepath),

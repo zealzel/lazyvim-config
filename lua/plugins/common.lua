@@ -17,7 +17,10 @@ return {
     },
     config = true,
   },
-  "williamboman/mason-lspconfig.nvim",
+
+  -- "williamboman/mason-lspconfig.nvim",
+  "mason-org/mason-lspconfig.nvim",
+
   "ellisonleao/gruvbox.nvim",
   "sunaku/tmux-navigate",
   "nvimdev/lspsaga.nvim",
@@ -48,7 +51,7 @@ return {
   --   config = true,
   -- },
   {
-    "echasnovski/mini.nvim",
+    "nvim-mini/mini.nvim",
     version = false,
   },
   {
@@ -232,11 +235,20 @@ return {
     },
     cmd = { "CsvViewEnable", "CsvViewDisable", "CsvViewToggle" },
   },
-  { "augmentcode/augment.vim" },
+  -- { "augmentcode/augment.vim" },
   -- {
   --   "kevinhwang91/nvim-ufo",
   --   dependencies = {
   --     { "kevinhwang91/promise-async" },
   --   },
   -- },
+  {
+    "greggh/claude-code.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- Required for git operations
+    },
+    config = function()
+      require("claude-code").setup()
+    end,
+  },
 }

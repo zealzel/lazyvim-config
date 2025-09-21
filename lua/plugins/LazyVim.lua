@@ -1,11 +1,16 @@
 return {
   -- Configure LazyVim to load gruvbox
   "LazyVim/LazyVim",
+  -- version = "14.15.0",
   -- opts = {
   --   colorscheme = "tokyonight-night", -- moon, storm, night, day
   -- },
   opts = {
     colorscheme = "gruvbox",
+    integrations = {
+      telescope = false,
+    },
+
     -- set border color
     -- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization
     -- https://gist.github.com/romainl/379904f91fa40533175dfaec4c833f2f
@@ -17,6 +22,9 @@ return {
     vim.cmd([[autocmd! ColorScheme * highlight FloatBorder guibg=none]]),
     vim.cmd([[autocmd! ColorScheme * highlight NormalFloat guibg=none]]),
   },
+  -- opts = {
+  --   telescope = false,
+  -- },
   -- opts = {
   --   colorscheme = "catppuccin-macchiato", -- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
   --   integrations = {

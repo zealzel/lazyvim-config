@@ -1,6 +1,7 @@
 return {
   {
-    "williamboman/mason.nvim",
+    -- "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = function(_, opts)
       table.insert(opts.ensure_installed, "xmlformatter")
     end,

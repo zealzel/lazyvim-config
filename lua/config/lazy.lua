@@ -1,3 +1,5 @@
+vim.fn.setenv("DYLD_LIBRARY_PATH", nil) -- 等同 unset, for img-clip/pngpaste to work
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -16,7 +18,7 @@ require("lazy").setup({
     { import = "plugins" },
     -- extra plugins
     ---- lsp
-    { import = "lazyvim.plugins.extras.lsp.none-ls" },
+    -- { import = "lazyvim.plugins.extras.lsp.none-ls" },
     ---- lang
     { import = "lazyvim.plugins.extras.lang.clangd" },
     { import = "lazyvim.plugins.extras.lang.cmake" },
