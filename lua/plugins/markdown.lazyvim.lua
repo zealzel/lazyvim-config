@@ -79,34 +79,18 @@ return {
   },
   { -- Markdown preview
     "iamcco/markdown-preview.nvim",
-    -- cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
-    -- build = function()
-    --   vim.fn["mkdp#util#install"]()
-    -- end,
-    build = "cd app && yarn install",
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
     init = function()
       vim.g.mkdp_filetypes = { "markdown" }
-      -- 指定自訂樣式（GitHub 風）
-      -- vim.g.mkdp_markdown_css = vim.fn.expand("/Users/zealzel/.dotfiles/lazyvim-config/markdown_iamcco.css")
-      -- vim.g.mkdp_markdown_css = "~/.dotfiles/lazyvim-config/markdown_iamcco.css"
-      vim.g.mkdp_markdown_css = vim.fn.expand("/Users/zealzel/.config/nvim/styles/github-markdown.css")
-      -- vim.g.mkdp_markdown_css = vim.fn.expand("~/.dotfiles/lazyvim-config/github-markdown.css")
-      -- 指定語法高亮樣式（可選）
-      -- vim.g.mkdp_highlight_css = vim.fn.expand("~/.config/nvim/styles/highlight-github.css")
-      -- 讓內容套上 .markdown-body（這樣 github-markdown.css 才會生效）
-      vim.g.mkdp_preview_options = {
-        markdown = {
-          toc = true,
-          disable_filename = 0,
-        },
-        content_editable = false,
-        disable_sync_scroll = 0,
-      }
+      vim.g.mkdp_markdown_css = vim.fn.expand("~/.dotfiles/lazyvim-config/github-markdown.css")
     end,
     keys = {
       {
-        "<leader>cp",
+        "<leader>mp",
         ft = "markdown",
         "<cmd>MarkdownPreviewToggle<cr>",
         desc = "Markdown Preview",
@@ -120,6 +104,71 @@ return {
         endfunction
       ]])
       vim.g.mkdp_browserfunc = "OpenMarkdownPreview"
+
+      -- checkbox
+      -- https://pierolescano.com/blog/a-picker-for-bullet-journal-style-checkboxes-for-neovim
+      -- This is using nerd fonts, so you might not be able to see the icons.
+      local checkboxes = {
+        { char = " ", icon = "󰄱", label = "to-do" },
+        { char = "/", icon = "", label = "in-progress" },
+        { char = "x", icon = "󰱒", label = "done" },
+      }
+
+      local function select_checkbox()
+        if vim.bo.filetype ~= "markdown" then
+          return
+        end
+        local pattern = "%- %[.-%] "
+        local line = vim.api.nvim_get_current_line()
+        if not line:match(pattern) then
+          return
+        end
+        vim.ui.select(checkboxes, {
+          prompt = "Checkboxes:",
+          format_item = function(item)
+            return string.format("%s %s", item.icon, item.label)
+          end,
+        }, function(choice)
+          if not choice then
+            return
+          end
+          local checkbox = string.format("- [%s] ", choice.char)
+          local modified_line = line:gsub(pattern, checkbox, 1)
+          vim.api.nvim_set_current_line(modified_line)
+        end)
+      end
+
+      local function check_checkbox()
+        if vim.bo.filetype ~= "markdown" then
+          return
+        end
+        local pattern = "%- %[.-%] "
+        local line = vim.api.nvim_get_current_line()
+        if not line:match(pattern) then
+          return
+        end
+        local checkbox = "- [x] "
+        local modified_line = line:gsub(pattern, checkbox, 1)
+        vim.api.nvim_set_current_line(modified_line)
+      end
+
+      local function uncheck_checkbox()
+        if vim.bo.filetype ~= "markdown" then
+          return
+        end
+        local pattern = "%- %[.-%] "
+        local line = vim.api.nvim_get_current_line()
+        if not line:match(pattern) then
+          return
+        end
+        local checkbox = "- [ ] "
+        local modified_line = line:gsub(pattern, checkbox, 1)
+        vim.api.nvim_set_current_line(modified_line)
+      end
+
+      vim.keymap.set("n", "<leader>mt", select_checkbox, { desc = "Select checkbox status" })
+      vim.keymap.set("n", "<leader>md", check_checkbox, { desc = "Check checkbox" })
+      vim.keymap.set("n", "<leader>mu", uncheck_checkbox, { desc = "Uncheck checkbox" })
     end,
   },
   {
