@@ -8,7 +8,8 @@ return {
     { "nvim-neorg/neorg-telescope" },
   },
   lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
-  version = "*", -- Pin Neorg to the latest stable release
+  -- version = "*", -- Pin Neorg to the latest stable release
+  version = false, -- get latest on branch
   config = function()
     vim.keymap.set("n", "\\f", "<Plug>(neorg.telescope.insert_file_link)", { desc = "Insert file link" })
     require("neorg").setup({

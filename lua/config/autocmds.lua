@@ -50,3 +50,14 @@ vim.api.nvim_create_autocmd({ "VimEnter", "VimLeavePre" }, {
 -- 提供手動清快取的指令與快捷鍵
 vim.api.nvim_create_user_command("SnacksImagePurge", purge_image_cache, {})
 vim.keymap.set("n", "<leader>ic", purge_image_cache, { desc = "Snacks: 清空圖片快取" })
+
+-- fix: neorg broken after neovim 0.11.4
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "norg", "neorg" },
+  callback = function()
+    if pcall(vim.treesitter.start) then
+      vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end
+  end,
+})
