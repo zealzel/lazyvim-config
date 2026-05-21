@@ -1,11 +1,12 @@
 return {
   "nvim-neorg/neorg",
   -- ISSUE: https://github.com/nvim-neorg/neorg/issues/1715
-  enabled = false, -- temp, neovim 0.11.4 is not supported yet. (2025/9/20 updated)
+  enabled = true, -- temp, neovim 0.11.4 is not supported yet. (2025/9/20 updated)
   dependencies = {
     -- "luarocks.nvim", // removed 2025/2/7.
     { "nvim-lua/plenary.nvim" },
     { "nvim-neorg/neorg-telescope" },
+    { "nvim-treesitter/nvim-treesitter" },
   },
   lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
   -- version = "*", -- Pin Neorg to the latest stable release
@@ -96,5 +97,12 @@ return {
       },
       highlight = { enable = true },
     })
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+      if vim.bo[buf].filetype == "norg" then
+        vim.api.nvim_buf_call(buf, function()
+          pcall(vim.treesitter.start)
+        end)
+      end
+    end
   end,
 }

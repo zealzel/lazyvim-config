@@ -1,7 +1,16 @@
 return {
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "master",
+    config = function() end,
+  },
+  {
   "nvim-treesitter/nvim-treesitter",
-  -- build = ":TSUpdate",
-  -- commit = "master",
+  branch = "master",
+  build = ":TSUpdate",
+  dependencies = {
+    { "nvim-treesitter/nvim-treesitter-textobjects", branch = "master" },
+  },
   event = { "BufReadPre", "BufNewFile" },
   -- lazy = false,
   opts = {
@@ -143,4 +152,5 @@ return {
   --     end,
   --   })
   -- end,
+  },
 }
