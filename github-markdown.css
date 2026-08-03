@@ -1226,3 +1226,18 @@
   min-height: 52px;
 }
 
+
+/* ---- page frame for MarkdownPreview(2026-08-03 追加)----
+   github-markdown.css 只管 .markdown-body 內部;GitHub 網站另有外框
+   (版心 + padding),MarkdownPreview 沒有,所以內容貼齊左緣。補上: */
+.markdown-body {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 44px 52px 96px;
+  font-size: 16px;
+  line-height: 1.75;
+}
+.markdown-body pre { line-height: 1.6; }
+@media (max-width: 767px) {
+  .markdown-body { padding: 20px 16px 48px; }
+}
