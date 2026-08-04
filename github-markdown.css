@@ -1241,3 +1241,10 @@
 @media (max-width: 767px) {
   .markdown-body { padding: 20px 16px 48px; }
 }
+
+/* ---- 表格:短欄不換行(2026-08-04 追加)----
+   欄寬被長內容欄擠壓時,標題(狀態→狀/態)和第一欄會被迫直排。
+   標題列與第一欄鎖定不換行;內容欄照常自動換行。 */
+.markdown-body table th { white-space: nowrap; }
+.markdown-body table td:first-child { white-space: nowrap; }
+.markdown-body table td:nth-child(2) { white-space: nowrap; }
