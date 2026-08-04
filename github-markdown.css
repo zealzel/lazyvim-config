@@ -1264,4 +1264,8 @@ nav.table-of-contents > ul { padding-left: 0; }
 nav.table-of-contents a { color: #57606a; text-decoration: none; display: inline-block; padding: 2px 0; }
 nav.table-of-contents a:hover { color: #0f6b62; }
 @media (max-width: 1280px) { nav.table-of-contents { display: none; } }
-@media (min-width: 1281px) { .markdown-body { margin-left: 290px; } }
+/* 寬螢幕:整個 body 讓出左欄寬度,版心在剩餘空間內照常置中滿寬 —
+   之前用 margin-left 推 .markdown-body 會跟置中規則疊加,把版心擠瘦 */
+@media (min-width: 1281px) {
+  body { padding-left: 270px; }
+}
