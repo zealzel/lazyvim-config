@@ -1268,4 +1268,6 @@ nav.table-of-contents a:hover { color: #0f6b62; }
    之前用 margin-left 推 .markdown-body 會跟置中規則疊加,把版心擠瘦 */
 @media (min-width: 1281px) {
   body { padding-left: 270px; }
+  /* 有側欄時版心加寬並靠左收攏,別讓側欄和內容之間空一大條 */
+  .markdown-body { max-width: 1200px; margin: 0 0 0 40px; }
 }
