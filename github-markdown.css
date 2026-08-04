@@ -1273,3 +1273,18 @@ nav.table-of-contents a:hover { color: #0f6b62; }
   #page-ctn { max-width: 1240px; margin: 0 0 0 32px; }
   .markdown-body { max-width: none; margin: 0; }
 }
+/* 大螢幕:側欄(250)+ 間距(32)+ 內容(1240)= 1522px 整組置中。
+   整組左緣 = 50vw - 761px,側欄與內容都從它推導;max() 保底不出畫面 */
+@media (min-width: 1600px) {
+  body { padding-left: 0; }
+  nav.table-of-contents {
+    left: max(12px, calc(50vw - 761px));
+    border-right: none;
+    background: transparent;
+  }
+  #page-ctn {
+    max-width: 1240px;
+    margin-left: max(294px, calc(50vw - 479px));
+    margin-right: auto;
+  }
+}
