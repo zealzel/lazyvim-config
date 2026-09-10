@@ -181,3 +181,12 @@ end
 vim.g.augment_workspace_folders = {
   "/Users/zealzel/Documents/Codes/Current/ssi/python+rust/facty_audio_python_module",
 }
+
+-- auto-session: LazyVim 的預設 sessionoptions 少了 "localoptions"，於是 :mksession
+-- 不會把 `setlocal filetype=...` 寫進 session 檔。還原時 Neovim 自己的 filetype 偵測
+-- 又幫不上忙 —— session 是用巢狀 autocmd 載入的，期間 did_filetype() 已為 1，
+-- runtime filetypedetect 呼叫的 `:setf` 就變成 no-op（見 :h :setf）。
+-- 結果：`nvim` 不帶參數還原 session 時，buffer 的 filetype 是空的 → 沒有
+-- treesitter highlight，要 :e 重新觸發才會有。auto-session 自己的 checkhealth
+-- 也會警告缺這個值。(2026-09-10 查證修復)
+vim.opt.sessionoptions:append("localoptions")
