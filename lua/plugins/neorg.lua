@@ -8,7 +8,7 @@ return {
     { "nvim-neorg/neorg-telescope" },
     { "nvim-treesitter/nvim-treesitter" },
   },
-  lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
+  ft = "norg", -- only load for .norg files, not every nvim instance
   -- version = "*", -- Pin Neorg to the latest stable release
   version = false, -- get latest on branch
   config = function()

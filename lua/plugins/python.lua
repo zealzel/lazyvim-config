@@ -5,7 +5,10 @@ return {
       opts.servers.basedpyright = {
         settings = {
           basedpyright = {
-            analysis = { typeCheckingMode = "basic" }, -- strict|standard|basic|off
+            analysis = {
+              typeCheckingMode = "basic", -- strict|standard|basic|off
+              exclude = { "**/.venv", "**/node_modules", "**/.git" },
+            },
           },
         },
       }
